@@ -2,9 +2,6 @@
 
 
 
-## About required Project
-
-<b>PHP: 7.4.29</b>
-<b>Laravel: 8.83.16</b>
+## About required Project <b>PHP: 7.4.29</b> <b>Laravel: 8.83.16</b>
 
 
