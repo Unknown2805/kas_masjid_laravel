@@ -76,3 +76,7 @@ Route::get('/kas-sosial/delete/{id}', [KasSosialController::class, 'destroy']);
 // Route::get('/bendahara-destroy/{id}', [BendaharaController::class, 'destroy']);
 
 Auth::routes();
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
