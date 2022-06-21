@@ -57,7 +57,7 @@
                     @foreach ($data as $d)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td><img src="{{ asset('/storage/events/' . $d->gambar) }}" alt="" width="140"></td>
+                            <td><img src="{{ asset('/storage/event/' . $d->gambar) }}" alt="" width="170" height="170"></td>
                             <td>{{ $d->judul }}</td>
                             <td>{{ $d->konten }}</td>
                             <td>
