@@ -135,12 +135,12 @@
                         <li class="sidebar-title">Settings</li>
 
                         <li class="sidebar-item  ">
-                            <a href="/event" class='sidebar-link'>
+                            <a href="{{ url('/events') }}" class='sidebar-link'>
                                 <i class="bi bi-calendar-event-fill"></i>
                                 <span>Event Masjid</span>
                             </a>
                         </li>
-                        @hasrole('admin')
+                        {{-- @hasrole('admin') --}}
                         <li class="sidebar-item  has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-people-fill"></i>
@@ -155,7 +155,7 @@
                                 </li>
                             </ul>
                         </li>
-                            @endhasrole
+                            {{-- @endhasrole --}}
 
                         <li class="sidebar-item  ">
                             <a href="{{ route('logout') }}" onclick="event.preventDefault();
