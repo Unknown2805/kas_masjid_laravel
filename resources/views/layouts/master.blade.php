@@ -24,6 +24,7 @@
             <div class="sidebar-wrapper active">
                 <div class="sidebar-header position-relative">
                     <div class="logo" style="font-size:20px;">
+                        
                         <a href="#">
                             Masjid <br>
                             Jami' Ar-Rahma
