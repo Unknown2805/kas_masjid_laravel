@@ -4,7 +4,6 @@ use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\KasMasjidController;
 use App\Http\Controllers\KasSosialController;
-use App\Http\Controller\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -66,22 +65,21 @@ Route::put('kas-sosial-pengeluaran/edit/{id}', [KasSosialController::class, 'edi
 //delete kas sosial
 Route::get('/kas-sosial/delete/{id}', [KasSosialController::class, 'destroy']);
 
-// Admin
-Route::get('/admin', [UserController::class, 'index'])->name('admin.index');
-Route::post('/store-admin', [UserController::class, 'store']);
-Route::get('/admin-destroy/{id}', [UserController::class, 'destroy']);
+// //Admin
+// Route::get('/admin', [UserController::class, 'index'])->name('admin.index');
+// Route::post('/store-admin', [UserController::class, 'store']);
+// Route::get('/admin-destroy/{id}', [UserController::class, 'destroy']);
 
-//Bendahara
-Route::get('/bendahara', [BendaharaController::class, 'index'])->name('bendahara.index');
-Route::post('/store-bendahara', [BendaharaController::class, 'store']);
-Route::get('/bendahara-destroy/{id}', [BendaharaController::class, 'destroy']);
+// //Bendahara
+// Route::get('/bendahara', [BendaharaController::class, 'index'])->name('bendahara.index');
+// Route::post('/store-bendahara', [BendaharaController::class, 'store']);
+// Route::get('/bendahara-destroy/{id}', [BendaharaController::class, 'destroy']);
 
 Auth::routes();
 
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-//events
-Route::get('/events', [EventsController::class, 'index']);
-Route::post('/events/tambah',[EventsController::class, 'store'])->name('events.index');
+Route::get('/events', [App\Http\Controllers\EventsController::class, 'index'])->name('event');
+Route::post('/events/tambah', [App\Http\Controllers\EventsController::class, 'store'])->name('event.store');
 Route::get('/events/{id}', [EventsController::class, 'destroy']);
+
+
