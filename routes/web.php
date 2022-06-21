@@ -5,6 +5,7 @@ use App\Http\Controllers\EventsController;
 use App\Http\Controllers\KasMasjidController;
 use App\Http\Controllers\KasSosialController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\BendaharaController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
