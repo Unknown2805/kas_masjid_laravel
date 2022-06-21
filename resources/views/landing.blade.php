@@ -8,7 +8,7 @@
   </head>
   <body>
       
-    <nav class="navbar navbar-expand-lg shadow fixed-top" style="background-color:  blue">
+    <nav class="navbar navbar-expand-lg shadow fixed-top" style="background-color:  #6fa380">
         <div class="container">
           <a class="navbar-brand" href="#" style="color: white;">Kas Masjid</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,7 +20,7 @@
                 <a class="nav-link active" aria-current="page" href="#berita" style="color: white">Berita</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ route('login') }}" style="color: white; background-color : rgb(50, 50, 250); border-radius : 10px;">Login</a>
+                <a class="nav-link" href="{{ route('login') }}" style="color: white; background-color : #6fa380 border-radius : 10px;">Login</a>
               </li>
             </ul>
           </div>
@@ -50,11 +50,14 @@
       </div>
       
       {{-- getwaves.io --}}
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0000ff" fill-opacity="1" d="M0,96L48,117.3C96,139,192,181,288,181.3C384,181,480,139,576,149.3C672,160,768,224,864,218.7C960,213,1056,139,1152,112C1248,85,1344,107,1392,117.3L1440,128L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
-
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#6fa380" fill-opacity="1" d="M0,128L48,149.3C96,171,192,213,288,197.3C384,181,480,107,576,74.7C672,43,768,53,864,90.7C960,128,1056,192,1152,229.3C1248,267,1344,277,1392,282.7L1440,288L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
+     
       <section id="berita">
       <div class="container">
+
+        <div class="judul" style="color: #6fa380">
           <h3>Berita Terbaru</h3>
+        </div>
           
           @foreach ($data->slice(0,5) as $d)
           <div class="card-group">
@@ -66,7 +69,9 @@
                         
                         <div class="col-md-8">
                             <div class="card-body">
+                              <div class="judul"style="color: #6fa380">
                                 <h5 class="card-title">{{ $d->judul }}</h5>
+                              </div>
                                 <p class="card-text">{{ $d->konten }}</p>
                             </div>    
                         </div>
