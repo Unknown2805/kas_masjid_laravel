@@ -1,10 +1,11 @@
 <?php
 
 use App\Http\Controllers\dashboardController;
+use App\Http\Controllers\EventsController;
 use App\Http\Controllers\KasMasjidController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KasSosialController;
-
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 
 /*
@@ -19,12 +20,11 @@ use App\Http\Controllers\KasSosialController;
 */
 
 
+Route::get('/', [dashboardController::class, 'landing'])->name('landing');
 
 
-
-
-Route::get('/', function () {
-    return view('dashboard');
+Route::get('/login', function () {
+    return view('auth.login ');
 });
 
 Route::get('/dashboard', [dashboardController::class, 'index'])->name('dashboard');
@@ -76,3 +76,10 @@ Route::get('/kas-sosial/delete/{id}', [KasSosialController::class, 'destroy']);
 // Route::get('/bendahara-destroy/{id}', [BendaharaController::class, 'destroy']);
 
 Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/events', [App\Http\Controllers\EventsController::class, 'index'])->name('event');
+Route::post('/events/tambah', [App\Http\Controllers\EventsController::class, 'store'])->name('event.store');
+Route::get('/events/{id}', [EventsController::class, 'destroy']);
+
+
