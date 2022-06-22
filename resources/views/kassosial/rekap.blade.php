@@ -12,6 +12,9 @@
             <h1>Rekap Kas Sosial</h1>   
         </div>
         <div class="card-body">
+            <button type="button" class="btn btn-danger mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Export PDF
+              </button>
             <table class="table table-striped" id="table1">
                 <thead>
                     <tr>

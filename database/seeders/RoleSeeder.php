@@ -22,9 +22,5 @@ class RoleSeeder extends Seeder
             'name' => 'bendahara',
             'guard_name' => 'web',
         ]);
-        Role::create([
-            'name' => 'user',
-            'guard_name' => 'web',
-        ]);
     }
 }

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Mazer Admin Dashboard</title>
+    <title>Kas Masjid</title>
 
     <link rel="stylesheet" href={{ asset('assets/css/main/app.css') }}>
     <link rel="stylesheet" href={{ asset('assets/css/main/app-dark.css') }}>
@@ -91,10 +91,6 @@
                                 <li class="submenu-item {{ request()->is('kas-masjid-pengeluaran*') ? 'active' : '' }}">
                                     <a href={{ url('kas-masjid-pengeluaran') }}>Pengeluaran Kas Masjid</a>
                                 </li>
-                                <li class="submenu-item {{ request()->is('kas-masjid-rekap*') ? 'active' : '' }}">
-                                    <a href={{ url('kas-masjid-rekap') }}>Rekap Kas Masjid</a>
-                                </li>
-
                             </ul>
                         </li>
                         {{-- Kas Sosial --}}
@@ -110,9 +106,6 @@
                                 <li class="submenu-item {{ request()->is('kas-sosial-pengeluaran*') ? 'active' : '' }}">
                                     <a href={{url('kas-sosial-pengeluaran')}}>Pengeluaran Kas Sosial</a>
                                 </li>
-                                <li class="submenu-item {{ request()->is('kas-sosial-rekap*') ? 'active' : '' }}">
-                                    <a href={{url('kas-sosial-rekap')}}>Rekap Kas Sosial</a>
-                                </li>
                             </ul>
                         </li>
 
@@ -123,13 +116,12 @@
                                 <span>Laporan Kas</span>
                             </a>
                             <ul class="submenu ">
-                                <li class="submenu-item ">
-                                    <a href="form-element-input.html">Kas Masjid</a>
+                                <li class="submenu-item {{ request()->is('kas-masjid-rekap*') ? 'active' : '' }}">
+                                    <a href={{ url('kas-masjid-rekap') }}>Rekap Kas Masjid</a>
                                 </li>
-                                <li class="submenu-item ">
-                                    <a href="form-element-input-group.html">Kas Sosial</a>
+                                <li class="submenu-item {{ request()->is('kas-sosial-rekap*') ? 'active' : '' }}">
+                                    <a href={{url('kas-sosial-rekap')}}>Rekap Kas Sosial</a>
                                 </li>
-
                             </ul>
                         </li>
 
