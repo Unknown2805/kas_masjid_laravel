@@ -8,7 +8,7 @@
   </head>
   <body>
       
-    <nav class="navbar navbar-expand-lg shadow fixed-top" style="background-color:  blue">
+    <nav class="navbar navbar-expand-lg shadow fixed-top" style="background-color:  #2fac68">
         <div class="container">
           <a class="navbar-brand" href="#" style="color: white;">Kas Masjid</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,12 +50,15 @@
       </div>
       
       {{-- getwaves.io --}}
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0000ff" fill-opacity="1" d="M0,96L48,117.3C96,139,192,181,288,181.3C384,181,480,139,576,149.3C672,160,768,224,864,218.7C960,213,1056,139,1152,112C1248,85,1344,107,1392,117.3L1440,128L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
-
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill="#2fac68" fill-opacity="1" d="M0,256L0,96L288,96L288,128L576,128L576,288L864,288L864,224L1152,224L1152,288L1440,288L1440,0L1152,0L1152,0L864,0L864,0L576,0L576,0L288,0L288,0L0,0L0,0Z"></path>
+      </svg>
+      
       <section id="berita">
       <div class="container">
-          <h3>Berita Terbaru</h3>
-          
+        <div class="berita" style="color: #2fac68">
+            <h3>Berita Terbaru</h3>
+          </div>
           @foreach ($data->slice(0,5) as $d)
           <div class="card-group">
               <div class="card mb-4 shadow">

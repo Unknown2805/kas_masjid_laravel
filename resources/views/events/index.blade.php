@@ -36,7 +36,7 @@
 </div>
 
 <section class="section">
-    <h1>Pemasukan</h1>
+    <h1>Event</h1>
     <div class="card card-info ">
 
         <div class="card-body">
@@ -61,7 +61,7 @@
                             <td>{{ $d->judul }}</td>
                             <td>{{ $d->konten }}</td>
                             <td>
-                                <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
+                                <a class="btn shadow btn-outline-success btn-sm mb-2" data-bs-toggle="modal"
                                     data-bs-target="#editMasuk{{ $d->id }}">Edit</i></a>
                                 <a class="btn shadow btn-outline-danger btn-sm"
                                     href={{ url('/events/' . $d->id) }}>delete</i></a>
