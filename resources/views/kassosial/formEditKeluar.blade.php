@@ -13,11 +13,11 @@
         <div class="modal-body">
             <div class="mb-3">
                 <label for="formGroupExampleInput" class="form-label">Uraian</label>
-                <input type="text" class="form-control" value="{{ $d->uraian }}" id="formGroupExampleInput" placeholder="Example input placeholder" name="uraian">
+                <input type="text" class="form-control" value="{{ $d->uraian }}" id="formGroupExampleInput" placeholder="Uraian" name="uraian">
               </div>
               <div class="mb-3">
                 <label for="formGroupExampleInput2" class="form-label">Pengeluaran</label>
-                <input type="text" class="form-control" value="{{ $d->keluar }}" id="formGroupExampleInput2" placeholder="Another input placeholder" name="keluar">
+                <input type="text" class="form-control" value="{{ $d->keluar }}" id="formGroupExampleInput2" placeholder="Pengeluaran" name="keluar">
               </div>
               <div class="mb-3">
                 <label for="formGroupExampleInput2" class="form-label">Tanggal</label>

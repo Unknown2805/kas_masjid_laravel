@@ -82,6 +82,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/events', [App\Http\Controllers\EventsController::class, 'index'])->name('event');
 Route::post('/events/tambah', [App\Http\Controllers\EventsController::class, 'store'])->name('event.store');
+Route::put('/events/edit/{id}', [App\Http\Controllers\EventsController::class, 'editEvent'])->name('events.editEvents');
 Route::get('/events/{id}', [EventsController::class, 'destroy']);
 
 

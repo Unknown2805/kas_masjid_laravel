@@ -60,17 +60,38 @@ class EventsController extends Controller
 
         return redirect()->back();
     }
+    
+    public function editEvent(Request $request,$id){
+        $data = Events::where('id',$id)->firstOrFail();
 
+        $request->validate([
+            'gambar' => 'required|file|max:3072',
+            'judul' => 'required',
+            'konten' => 'required',
+        ]);
+
+        $data->judul = $request->judul;
+        $data->konten = $request->konten;
+        
+        $img = $request->file('gambar');
+        $filename = $img->getClientOriginalName();
+
+        if ($request->hasFile('gambar')) {
+            $request->file('gambar')->storeAs('/event',$filename);
+        }
+        $data->gambar = $request->file('gambar')->getClientOriginalName();
+        // dd($data);
+        $data->update();
+
+        return redirect()->back();
+    }
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+   
 
     /**
      * Show the form for editing the specified resource.

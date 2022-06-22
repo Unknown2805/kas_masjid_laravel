@@ -61,10 +61,8 @@
                             <td>{{ $d->judul }}</td>
                             <td>{{ $d->konten }}</td>
                             <td>
-                                <a class="btn shadow btn-outline-success btn-sm mb-2" data-bs-toggle="modal"
-                                    data-bs-target="#editMasuk{{ $d->id }}">Edit</i></a>
-                                <a class="btn shadow btn-outline-danger btn-sm"
-                                    href={{ url('/events/' . $d->id) }}>delete</i></a>
+                                <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#editEvents{{ $d->id }}">Edit</i></a>
+                                <a class="btn shadow btn-outline-danger btn-sm" href={{ url('/events/' . $d->id) }}>delete</i></a>
                             </td>
                         </tr>
                     @endforeach
@@ -73,6 +71,7 @@
             </table>
         </div>
     </div>
+    @include('events/formEditEvent')
 </section>
     
 @endsection

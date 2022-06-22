@@ -6,48 +6,28 @@
     <title>Landing Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   </head>
-  <body>
-      
-    <nav class="navbar navbar-expand-lg shadow fixed-top" style="background-color:  #2fac68">
+  <body style="background-color:#eeeee4">      
+
+    <nav class="navbar navbar-expand-lg fixed-top" >
         <div class="container">
-          <a class="navbar-brand" href="#" style="color: white;">Kas Masjid</a>
+          <b><a class="navbar-brand" href="#" style="color: white;font-size:22px">Kas Masjid</a></b>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item me-4">
-                <a class="nav-link active" aria-current="page" href="#berita" style="color: white">Berita</a>
+                <a class="nav-link active" aria-current="page" href="#berita" style="color: white;font-size:20px;">Berita</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ route('login') }}" style="color: white; background-color : rgb(50, 50, 250); border-radius : 10px;">Login</a>
+                <a class="nav-link" href="{{ route('login') }}" style="color: white;font-size:20px">Login</a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
 
-      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="{{ asset('assets/images/faces/1.jpg') }}" class="mx-auto w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="{{ asset('assets/images/faces/1.jpg') }}" class="mx-auto w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="{{ asset('assets/images/faces/1.jpg') }}" class="mx-auto w-100" alt="...">
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
+    
       
       {{-- getwaves.io --}}
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
@@ -59,8 +39,8 @@
         <div class="berita" style="color: #2fac68">
             <h3>Berita Terbaru</h3>
           </div>
-          @foreach ($data->slice(0,5) as $d)
-          <div class="card-group">
+          @foreach ($data->slice(0,3) as $d)
+          <div class="card-group col-md-8">
               <div class="card mb-4 shadow">
                   <div class="row">
                       <div class="col-md-4">
@@ -73,7 +53,7 @@
                                 <p class="card-text">{{ $d->konten }}</p>
                             </div>    
                         </div>
-                    </div>
+                  </div>
                 </div>
             </div>
             @endforeach
