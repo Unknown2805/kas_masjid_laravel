@@ -27,27 +27,9 @@
         </div>
       </nav>
 
-      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="{{ asset('assets/images/faces/1.jpg') }}" class="mx-auto w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="{{ asset('assets/images/faces/1.jpg') }}" class="mx-auto w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="{{ asset('assets/images/faces/1.jpg') }}" class="mx-auto w-100" alt="...">
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
+     {{-- chart 1 --}}
+
+     {{-- tutup chart 1 --}}
       
       {{-- getwaves.io --}}
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
@@ -57,10 +39,10 @@
       <section id="berita">
       <div class="container">
         <div class="berita" style="color: #2fac68">
-            <h3>Berita Terbaru</h3>
+            <h5>Berita Terbaru</h5>
           </div>
           @foreach ($data->slice(0,5) as $d)
-          <div class="card-group">
+          <div class="card-group shadow">
               <div class="card mb-4 shadow">
                   <div class="row">
                       <div class="col-md-4">
@@ -69,7 +51,9 @@
                         
                         <div class="col-md-8">
                             <div class="card-body">
+                              <div class="judul" style="color: #2fac68">
                                 <h5 class="card-title">{{ $d->judul }}</h5>
+                              </div>
                                 <p class="card-text">{{ $d->konten }}</p>
                             </div>    
                         </div>
