@@ -43,7 +43,7 @@
           </div>
           @foreach ($data->slice(0,5) as $d)
           <div class="card-group shadow">
-              <div class="card mb-4 shadow">
+              <div class="card mb-4 ">
                   <div class="row">
                       <div class="col-md-4">
                           <img src={{ asset('/storage/event/' .$d->gambar) }} class="card-img" alt="...">
