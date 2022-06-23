@@ -6,6 +6,7 @@ use App\Http\Controllers\KasMasjidController;
 use App\Http\Controllers\KasSosialController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BendaharaController;
+use App\Http\Controllers\landingController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,14 +23,14 @@ use Illuminate\Support\Facades\Auth;
 */
 
 
-Route::get('/', [dashboardController::class, 'landing'])->name('landing');
+Route::get('/', [landingController::class, 'landing'])->name('landing');
 
 
 Route::get('/login', function () {
     return view('auth.login ');
 });
 
-Route::get('/dashboard', [dashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', [dashboardController::class, 'dashboard'])->name('dashboard');
 
 //get data kas masjid
 Route::get('/kas-masjid-rekap', [KasMasjidController::class, 'rekap']);

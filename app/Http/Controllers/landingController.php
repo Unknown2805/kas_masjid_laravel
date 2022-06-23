@@ -4,27 +4,25 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Events;
-class dashboardController extends Controller
+
+class landingController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    
-
-    public function __construct()
+    public function landing()
     {
-        $this->middleware('auth');
+        $data = Events::all();
+        return view('landing',compact('data'));
     }
-    
-    public function dashboard()
+         
+    public function index()
     {
-        return view('dashboard');
+        //
     }
 
-    
-    
     /**
      * Show the form for creating a new resource.
      *
@@ -54,7 +52,7 @@ class dashboardController extends Controller
      */
     public function show($id)
     {
-       //
+        //
     }
 
     /**

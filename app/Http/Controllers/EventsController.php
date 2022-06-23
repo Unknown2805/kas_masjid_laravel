@@ -24,9 +24,9 @@ class EventsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function __construct()
     {
-        //
+        $this->middleware('auth');
     }
 
     /**
