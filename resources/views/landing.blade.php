@@ -8,8 +8,8 @@
   </head>
   <body style="background-color:#eeeee4">      
 
-    <nav class="navbar navbar-expand-lg fixed-top" >
-        <div class="container">
+    <nav class="navbar navbar-expand-lg shadow fixed-top" style="background-color:  #2fac68">
+      <div class="container">
           <b><a class="navbar-brand" href="#" style="color: white;font-size:22px">Kas Masjid</a></b>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -37,12 +37,12 @@
       <section id="berita">
       <div class="container">
         <div class="berita" style="color: #2fac68">
-            <h3>Berita Terbaru</h3>
+            <h5>Berita Terbaru</h5>
           </div>
           @foreach ($data->slice(0,3) as $d)
           <div class="card-group col-md-8">
               <div class="card mb-4 shadow">
-                  <div class="row">
+                  <div class="row ">
                       <div class="col-md-4">
                           <img src={{ asset('/storage/event/' .$d->gambar) }} class="card-img" alt="...">
                         </div>
