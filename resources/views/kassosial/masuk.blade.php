@@ -20,7 +20,7 @@
               </div>
               <div class="mb-3">
                 <label for="formGroupExampleInput2" class="form-label">Pemasukan</label>
-                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Pemasukan" name="masuk">
+                <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="Pemasukan" name="masuk">
               </div>
               <div class="mb-3">
                 <label for="formGroupExampleInput2" class="form-label">Tanggal</label>

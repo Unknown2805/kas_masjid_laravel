@@ -6,6 +6,8 @@ use App\Http\Controllers\KasMasjidController;
 use App\Http\Controllers\KasSosialController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BendaharaController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProfileMasjidController;
 use App\Http\Controllers\landingController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -26,11 +28,14 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', [landingController::class, 'landing'])->name('landing');
 
 
-Route::get('/login', function () {
-    return view('auth.login ');
-});
+// Route::get('/login', function () {
+//     return view('auth.login ');
+// });
+Route::get('/login', [LoginController::class, 'login']);
 
 Route::get('/dashboard', [dashboardController::class, 'dashboard'])->name('dashboard');
+Route::post('/dashboard/tambah', [App\Http\Controllers\ProfileMasjidController::class, 'store']);
+Route::put('/dashboard/edit/{id}', [App\Http\Controllers\ProfileMasjidController::class, 'EditMasjid']);
 
 //get data kas masjid
 Route::get('/kas-masjid-rekap', [KasMasjidController::class, 'rekap']);
@@ -80,11 +85,9 @@ Route::get('/bendahara-destroy/{id}', [BendaharaController::class, 'destroy']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\dashboardController::class, 'dashboard']);
 Route::get('/events', [App\Http\Controllers\EventsController::class, 'index'])->name('event');
 Route::post('/events/tambah', [App\Http\Controllers\EventsController::class, 'store'])->name('event.store');
 Route::put('/events/edit/{id}', [App\Http\Controllers\EventsController::class, 'editEvent'])->name('events.editEvents');
 Route::get('/events/{id}', [EventsController::class, 'destroy']);
 
-
-Route::put('/dashboard/edit/{id}', [App\Http\Controllers\UserController::class, 'editPp']);

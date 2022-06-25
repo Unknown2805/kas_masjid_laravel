@@ -20,7 +20,7 @@
                 <a class="nav-link active" aria-current="page" href="#berita" style="color: white;font-size:20px;">Berita</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ route('login') }}" style="color: white;font-size:20px">Login</a>
+                <a class="nav-link" href="/login" style="color: white;font-size:20px">Login</a>
               </li>
             </ul>
           </div>

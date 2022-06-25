@@ -43,32 +43,17 @@ class UserController extends Controller
         $data->save();
         $data->assignRole('admin');
 
-        return redirect()->route('user.index')->with('success', 'Task Created Successfully!');
+        return redirect()->back()->with('success', 'Task Created Successfully!');
     }
 
-    public function editPp(Request $request)
 
+    public function login(Request $request)
     {
-        $data = User::where('id', Auth::user()->id)->firstOrFail();
-        $request->validate([
-            'image' => 'required|file|max:3072',
-            'masjid' => 'required',
-                ]);
-
-        $data->masjid = $request->masjid;
+        $data = User::all();
         
-        $img = $request->file('image');
-        $filename = $img->getClientOriginalName();
-
-        if ($request->hasFile('image')) {
-            $request->file('image')->storeAs('/masjid',$filename);
-        }
-        $data->image = $request->file('image')->getClientOriginalName();
-        // dd($data);
-        $data->update();
-
-        return redirect()->back();
     }
+
+
  
     /**
      * Remove the specified resource from storage.

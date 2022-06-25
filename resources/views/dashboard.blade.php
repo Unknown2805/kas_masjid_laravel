@@ -3,28 +3,25 @@
 @section('main')
 
     {{-- editpp --}}
-    <div class="modal fade" id="editPp{{ \Auth::user()->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action= "{{ url('/dashboard/edit/'. \Auth::user()->id) }}" method="POST" enctype="multipart/form-data">
+                <form action={{ url('dashboard/tambah') }} method="POST" enctype="multipart/form-data">
                     @csrf
-                    @method('PUT')
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label for="formGroupExampleInput" class="form-label">Nama Masjid</label>
-                            <input type="text" class="form-control" value="{{\Auth::user()->masjid}}" id="formGroupExampleInput" placeholder="Uraian" name="masjid">
+                            <label for="formGroupExampleInput" class="form-label">Uraian</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Uraian" name="masjid">
                           </div>
                           <div class="mb-3">
-                            <label for="formGroupExampleInput2" class="form-label">Image</label>
-                                <div class="col-md-8 mb-3">
-                                    <img src='' class="card-img" alt="..." style="height:180px;"/>
-                                </div>
-                            <input type="file" class="form-control" id="formGroupExampleInput2" name="image">
+                            <label for="formGroupExampleInput2" class="form-label">Pemasukan</label>
+                            <input type="file" class="form-control" id="formGroupExampleInput2" placeholder="Pemasukan" name="image">
                           </div>
+                          
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -34,9 +31,9 @@
             </div>
         </div>
     </div>
-
+    
     <div class="page-heading">
-        <h3>Data Rekap Kas</h3>
+        <h3>Dashboard</h3>
     </div>
 
     {{-- <div class="page-contesnt">
@@ -113,76 +110,100 @@
     </div> --}}
 
     <div class="page-content">
-        <section class="row">
-            <div class="col-12 col-lg-9">
+        <section>
+            <div class="col-12 col-md-12">
                 <div class="row">
-                    <div class="col-12">
-                        <div class="card shadow">
+                    <div class="col-12 col-md-4">
+                        <div class="card shadow" style="height:220px">
+                        
+                            @foreach ($data as $d)
+
+                            <div class="card-body" >
+
+                                <div class="text-center">
+                                    <div class="avatar avatar-xl mt-2">  
+                                        <img src="{{ asset('/storage/masjid/'.$d->image) }}">
+                                    </div>  
+                                </div>
+                        
+                                <div class="text-center">
+                                    <div class="mt-4">                              
+                                        <h5 class="font-bold">{{ $d->masjid }}</h5>                                
+                                    </div>
+                                </div>
+                                @hasrole('admin')
+                                <div class="text-center">
+                                    <a class="btn btn-outline-success btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#editMasjid{{ $d->id }}">Edit</a>
+                                </div>
+                                @endhasrole
+
+                            </div>
+                            @endforeach
+
+                            
+                        </div>
+                    </div>
+
+                   
+
+                    <div class="col-6 col-md-4" >
+                        <div class="card shadow" style="height:220px">
+                            <div class="card-header ">
+                                <h4>Visitors Profile</h4>
+                            </div>
+                            <div class="card-body">
+                                <div id="chart-visitors-profile"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-md-4" >
+                        <div class="card shadow" style="height:220px">
+                            <div class="card-header">
+                                <h4>Visitors Profile</h4>
+                            </div>
+                            <div class="card-body">
+                                <div id="chart-visitors-profile"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-12 col-md-12">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="card shadow" style="height:260px">
                             <div class="card-header">
                                 <h4>Rekap kas Masjid saat ini</h4>
                             </div>
                             <div class="card-body shadow">
-                                <canvas id="myChart" width="400" height="400"></canvas>
+                                {{-- <canvas id="myChart" width="400" height="400"></canvas> --}}
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card shadow ">
+                
+                    <div class="col-12 col-md-6">
+                        <div class="card shadow " style="height:260px">
                             <div class="card-header ">
                                 <h4>Rekap kas Sosial saat ini</h4>
                             </div>
                             <div class="card-body">
-                                <canvas id="myChart" width="400" height="400"></canvas>
+                                {{-- <canvas id="myChart" width="400" height="400"></canvas> --}}
                             </div>
                         </div>
                     </div>
                 </div>
 
             </div>
-            <div class="col-12 col-lg-3">
-                <div class="card shadow">
-                    <div class="card-body py-4 px-5">
-                        <div class="d-flex align-items-center">
-                            <div class="avatar avatar-xl">
-                                @if (\Auth::user()->image)
-                                <img src="{{ asset('/storage/masjid/'.\Auth::user()->image) }}">
-                                @else
-                                <img src="assets/images/faces/masjidsamping.jpg" alt="Face 1">
-                                @endif
-                            </div>
-                            <div class="ms-3">
-                                @if (\Auth::user()->masjid)
-                                <h5 class="font-bold">{{ \Auth::user()->masjid }}</h5>
-                                @else
-                                <h5 class="font-bold">nama masjid</h5>
-                                @endif
-                                <a style = "cursor:pointer"data-bs-toggle="modal" data-bs-target="#editPp{{ \Auth::user()->id }}">edit</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card shadow">
-                    <div class="card-header ">
-                        <h4>Visitors Profile</h4>
-                    </div>
-                    <div class="card-body">
-                        <div id="chart-visitors-profile"></div>
-                    </div>
-                </div>
-
-                <div class="card shadow">
-                    <div class="card-header ">
-                        <h4>Visitors Profile</h4>
-                    </div>
-                    <div class="card-body">
-                        <div id="chart-visitors-profile"></div>
-                    </div>
-                </div>
-            </div>
+        
+            
+                
+            
+            
         </section>
+        @include('formEditMasjid')
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 @endsection
