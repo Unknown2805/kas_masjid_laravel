@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -43,6 +44,30 @@ class UserController extends Controller
         $data->assignRole('admin');
 
         return redirect()->route('user.index')->with('success', 'Task Created Successfully!');
+    }
+
+    public function editPp(Request $request)
+
+    {
+        $data = User::where('id', Auth::user()->id)->firstOrFail();
+        $request->validate([
+            'image' => 'required|file|max:3072',
+            'masjid' => 'required',
+                ]);
+
+        $data->masjid = $request->masjid;
+        
+        $img = $request->file('image');
+        $filename = $img->getClientOriginalName();
+
+        if ($request->hasFile('image')) {
+            $request->file('image')->storeAs('/masjid',$filename);
+        }
+        $data->image = $request->file('image')->getClientOriginalName();
+        // dd($data);
+        $data->update();
+
+        return redirect()->back();
     }
  
     /**

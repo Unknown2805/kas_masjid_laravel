@@ -87,3 +87,4 @@ Route::put('/events/edit/{id}', [App\Http\Controllers\EventsController::class, '
 Route::get('/events/{id}', [EventsController::class, 'destroy']);
 
 
+Route::put('/dashboard/edit/{id}', [App\Http\Controllers\UserController::class, 'editPp']);

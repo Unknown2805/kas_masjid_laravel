@@ -25,10 +25,11 @@
                 <div class="sidebar-header position-relative">
                     <div class="logo" style="font-size:20px;">
                         
-                        <a href="#">
-                            Masjid <br>
-                            Jami' Ar-Rahma
-                        </a>
+                        @if (\Auth::user()->masjid)
+                                <h5 class="font-bold">{{ \Auth::user()->masjid }}</h5>
+                                @else
+                                <h5 class="font-bold">nama masjid</h5>
+                                @endif
                     </div>
 
                 </div>
