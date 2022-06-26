@@ -137,7 +137,7 @@
                                 @hasrole('admin')
 
                                     <div class="text-center" >
-                                        <a class="btn btn-outline-success btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal">tambah</a>
+                                        <a class="btn btn-primary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal">tambah</a>
                                     </div>
 
                                 @endhasrole  

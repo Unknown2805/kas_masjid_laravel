@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Events;
+use App\Models\ProfileMasjid;
 
 class landingController extends Controller
 {
@@ -15,7 +16,8 @@ class landingController extends Controller
     public function landing()
     {
         $data = Events::all();
-        return view('landing',compact('data'));
+        $data2 = ProfileMasjid::all();
+        return view('landing',compact('data','data2'));
     }
          
     public function index()
