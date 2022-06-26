@@ -116,8 +116,42 @@
                     <div class="col-12 col-md-4">
                         <div class="card shadow" style="height:220px">
                         
-                            @foreach ($data as $d)
 
+
+                            @if (!isset($data[0]->masjid))
+                                
+                            <div class="card-body" >
+
+                                <div class="text-center">
+                                    <div class="avatar avatar-xl mt-2">  
+                                        <img src="assets/images/faces/masjidsamping.jpg"/>
+                                    </div>  
+                                </div>
+                        
+                                <div class="text-center">
+                                    <div class="mt-4">                              
+                                        <h5 class="font-bold">Nama Masjid</h5>                                
+                                    </div>
+                                </div>
+
+                                @hasrole('admin')
+
+                                    <div class="text-center" >
+                                        <a class="btn btn-outline-success btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal">tambah</a>
+                                    </div>
+
+                                @endhasrole  
+                            
+                            </div>
+                            
+
+                            @else
+                   
+                   
+                            @foreach ($data as $d)
+                            
+                            
+                            
                             <div class="card-body" >
 
                                 <div class="text-center">
@@ -132,15 +166,19 @@
                                     </div>
                                 </div>
                                 @hasrole('admin')
+
                                 <div class="text-center">
                                     <a class="btn btn-outline-success btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#editMasjid{{ $d->id }}">Edit</a>
                                 </div>
+                                
                                 @endhasrole
 
                             </div>
+
+                           
                             @endforeach
 
-                            
+                            @endif       
                         </div>
                     </div>
 
