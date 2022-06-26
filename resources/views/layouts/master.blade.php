@@ -62,7 +62,7 @@
                         <li class="sidebar-title">Menu</li>
 
                         {{-- dashboard --}}
-                        <li class="sidebar-item {{ request()->is('dashboard*') ? 'active' : '' }} ">
+                        <li class="sidebar-item {{ request()->is('dashboard*') ? 'active' : '' }}">
                             <a href={{ url('/dashboard') }} class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
