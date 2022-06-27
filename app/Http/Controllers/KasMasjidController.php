@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\KasMasjid;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Carbon;
+
 
 class KasMasjidController extends Controller
 {
@@ -19,6 +22,17 @@ class KasMasjidController extends Controller
         // dd($data);
 
         return view('kasmasjid.rekap',compact('data'));
+    }
+
+    public function cetak_pdf() {
+        $data = KasMasjid::all();
+
+
+        $pdf = PDF::loadview('kasmasjid.rekap_pdf',['data'=>$data]);
+            
+        return $pdf->download('laporan-kas-masjid.pdf');
+
+
     }
 
     public function masuk() {

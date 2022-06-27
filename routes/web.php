@@ -55,6 +55,8 @@ Route::get('/kas-masjid/delete/{id}', [KasMasjidController::class, 'destroy']);
 
 Route::post('store-admin', [UserController::class, 'store'])->name('admin.store');
 
+Route::get('/rekap/masjid', [KasMasjidController::class, 'cetak_pdf']);
+
 
 
 //get data kas sosial
@@ -72,6 +74,8 @@ Route::put('kas-sosial-pengeluaran/edit/{id}', [KasSosialController::class, 'edi
 
 //delete kas sosial
 Route::get('/kas-sosial/delete/{id}', [KasSosialController::class, 'destroy']);
+
+Route::get('/rekap/sosial', [KasSosialController::class, 'cetak_pdf']);
 
 //Admin
 Route::get('/admin', [UserController::class, 'index'])->name('admin.index');
