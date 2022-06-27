@@ -51,7 +51,7 @@ Route::put('kas-masjid-pemasukan/edit/{id}', [KasMasjidController::class, 'editP
 Route::put('kas-masjid-pengeluaran/edit/{id}', [KasMasjidController::class, 'editPengeluaran'])->name('kasmasjid.editKeluar');
 
 //delete kas masjid
-Route::get('/kas-masjid/delete/{id}', [KasMasjidController::class, 'destroy']);
+Route::delete('/kas-masjid/delete/{id}', [KasMasjidController::class, 'destroy']);
 
 Route::post('store-admin', [UserController::class, 'store'])->name('admin.store');
 
@@ -73,19 +73,19 @@ Route::put('kas-sosial-pemasukan/edit/{id}', [KasSosialController::class, 'editP
 Route::put('kas-sosial-pengeluaran/edit/{id}', [KasSosialController::class, 'editPemasukan'])->name('kassosial.editMasuk');
 
 //delete kas sosial
-Route::get('/kas-sosial/delete/{id}', [KasSosialController::class, 'destroy']);
+Route::delete('/kas-sosial/delete/{id}', [KasSosialController::class, 'destroy']);
 
 Route::get('/rekap/sosial', [KasSosialController::class, 'cetak_pdf']);
 
 //Admin
 Route::get('/admin', [UserController::class, 'index'])->name('admin.index');
 Route::post('/store-admin', [UserController::class, 'store']);
-Route::get('/admin-destroy/{id}', [UserController::class, 'destroy']);
+Route::delete('/admin-destroy/{id}', [UserController::class, 'destroy']);
 
 //Bendahara
 Route::get('/bendahara', [BendaharaController::class, 'index'])->name('bendahara.index');
 Route::post('/store-bendahara', [BendaharaController::class, 'store']);
-Route::get('/bendahara-destroy/{id}', [BendaharaController::class, 'destroy']);
+Route::delete('/bendahara-destroy/{id}', [BendaharaController::class, 'destroy']);
 
 Auth::routes();
 

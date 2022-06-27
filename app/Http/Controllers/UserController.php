@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
@@ -43,6 +44,7 @@ class UserController extends Controller
         $data->save();
         $data->assignRole('admin');
 
+        Alert::success('Sukses!', 'Berhasil Menambah Data');
         return redirect()->back()->with('success', 'Task Created Successfully!');
     }
 
@@ -50,11 +52,10 @@ class UserController extends Controller
     public function login(Request $request)
     {
         $data = User::all();
-        
     }
 
 
- 
+
     /**
      * Remove the specified resource from storage.
      *
@@ -65,6 +66,8 @@ class UserController extends Controller
     {
         $item = User::find($id);
         $item->delete();
+
+        Alert::success('Sukses!','Berhasil Menghapus Data');
         return redirect('/admin');
     }
 }

@@ -7,6 +7,7 @@ use App\Models\KasMasjid;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Carbon;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 class KasMasjidController extends Controller
@@ -63,6 +64,7 @@ class KasMasjidController extends Controller
             // dd($data);
         $data-> save();
 
+        Alert::success('Sukses!','Berhasil Menambah Data');
         return redirect()->back();
         
     }
@@ -81,6 +83,7 @@ class KasMasjidController extends Controller
         $data-> jenis = 'keluar';
         $data-> save();
 
+        Alert::success('Sukses!','Berhasil Menambah Data');
         return redirect()->back();
         
     }
@@ -101,6 +104,8 @@ class KasMasjidController extends Controller
         $data->masuk = $request->masuk;
         $data->update();
 
+        Alert::success('Sukses!','Berhasil Merubah Data');
+
         return redirect()->back();
     }
   
@@ -120,6 +125,7 @@ class KasMasjidController extends Controller
         // dd($data);
         $data->update();
 
+        Alert::success('Sukses!','Berhasil Merubah Data');
         return redirect()->back();
     }
 
@@ -130,6 +136,7 @@ class KasMasjidController extends Controller
 
         $data->delete();
 
+        Alert::success('Sukses!','Berhasil Menghapus Data');
         return redirect()->back();
     }
 }

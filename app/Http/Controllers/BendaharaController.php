@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class BendaharaController extends Controller
 {
@@ -44,6 +45,7 @@ class BendaharaController extends Controller
         $data->save();
         $data->assignRole('bendahara');
 
+        Alert::success('Sukses!','Berhasil Menambah Data');
         return redirect()->route('bendahara.index')->with('success', 'Task Created Successfully!');
     }
   
@@ -57,6 +59,8 @@ class BendaharaController extends Controller
     {
         $item = User::find($id);
         $item->delete();
+        
+        Alert::success('Sukses!','Berhasil Menghapus Data');
         return redirect('/bendahara');
     }
 }

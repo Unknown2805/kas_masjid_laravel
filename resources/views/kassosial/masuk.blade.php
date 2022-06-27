@@ -36,6 +36,33 @@
     </div>
   </div>
 
+  @foreach ($data as $d)
+  <div class="modal fade" id="delete{{ $d->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              {{-- <div class="modal-header">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div> --}}
+              <form action={{ url('/kas-sosial/delete/' . $d->id) }} method="POST" enctype="multipart/form-data">
+                  @csrf
+                  @method('DELETE')
+                  <div class="modal-body">
+                      <center class="mt-3">
+                          <h5>
+                              apakah anda yakin ingin menghapus data ini?
+                          </h5>
+                      </center>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+                      <button type="submit" class="btn btn-danger">Hapus!</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+  @endforeach
+
 <section class="section">
     <h1>Pemasukan</h1>
     <div class="card card-info ">
@@ -62,8 +89,8 @@
                         <td>Rp.{{$d->masuk}}</td>
                         <td>
                             <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#editMasuk{{ $d->id}}">Edit</i></a>
-                            <a class="btn shadow btn-outline-danger btn-sm" href={{url('/kas-sosial/delete/'. $d->id)}}>delete</i></a>
-                        </td>
+                            <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete{{ $d->id }}">delete</i></a>
+                          </td>
                     </tr>
                     @endforeach
                     

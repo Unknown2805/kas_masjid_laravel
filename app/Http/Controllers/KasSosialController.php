@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\KasSosial;
 use Barryvdh\DomPDF\Facade\Pdf;
-
+use RealRashid\SweetAlert\Facades\Alert;
 
 class KasSosialController extends Controller
 {
@@ -65,6 +65,7 @@ class KasSosialController extends Controller
         $data-> jenis = 'masuk';
         $data-> save();
 
+        Alert::success('Sukses!','Berhasil Menambah Data');
         return redirect()->back();
         
     }
@@ -84,6 +85,7 @@ class KasSosialController extends Controller
         $data-> jenis = 'keluar';
         $data-> save();
 
+        Alert::success('Sukses!','Berhasil Menambah Data');
         return redirect()->back();
         
     }
@@ -104,6 +106,7 @@ class KasSosialController extends Controller
         $data->masuk = $request->masuk;
         $data->update();
 
+        Alert::success('Sukses!','Berhasil Merubah Data');
         return redirect()->back();
     }
 
@@ -123,6 +126,7 @@ class KasSosialController extends Controller
         // dd($data);
         $data->update();
 
+        Alert::success('Sukses!','Berhasil Merubah Data');
         return redirect()->back();
     }
 
@@ -133,6 +137,7 @@ class KasSosialController extends Controller
 
         $data->delete();
 
+        Alert::success('Sukses!','Berhasil Menghapus Data');
         return redirect()->back();
     }
 }

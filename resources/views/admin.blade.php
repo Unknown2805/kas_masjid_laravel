@@ -14,8 +14,8 @@
                     <div class="modal-body container">
                         <div class="col-md-12 mb-4">
                             <div class="form-floating">
-                                <input required type="text" class="form-control mt-2" id="floatingName" placeholder="Name"
-                                    name="name" required>
+                                <input required type="text" class="form-control mt-2" id="floatingName"
+                                    placeholder="Name" name="name" required>
                                 <label for="floatingKeterangan">Name</label>
                             </div>
                         </div>
@@ -44,39 +44,41 @@
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary btn_add mt-3">Submit</button>
                         </div>
-
-                        
-
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    @foreach ($user as $a)
-        <div class="modal fade" id="modalDelete{{ $a->id }}" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
+
+    @foreach ($user as $d)
+        <div class="modal fade" id="delete{{ $d->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header bg-danger">
-                        <h2 class="modal-title" style="color: white">Delete</h2>
-                        <button style="color: white" type="button" class="" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body mx-5 mb-3">
-                        <span class="warning">
-                            <img src="assets/images/warning.png">
-                        </span>
-                        <h2 style="text-align: center"> are you sure want to delete this admin? </h2>
-                    </div>
-                    <div class="modal-footer">
-                        <form action="{{ url('/admin-destroy/' . $a->id) }}">
-                            <button type="submit" class="btn btn-danger"><i class="bx bx-trash"></i>
-                                Delete</button>
-                        </form>
-                    </div>
+                    {{-- <div class="modal-header">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div> --}}
+                    <form action={{ url('/admin-destroy/' . $d->id) }} method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('DELETE')
+                        <div class="modal-body">
+                            <center class="mt-3">
+                                <h5>
+                                    apakah anda yakin ingin menghapus data ini?
+                                </h5>
+                            </center>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+                            <button type="submit" class="btn btn-danger">Hapus!</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     @endforeach
+
+
 
     <div class="container-fluid">
         <div class="row">
@@ -108,8 +110,9 @@
                                 <td>{{ $users->email }}</td>
                                 <td>{{ $users->roles->pluck('name')->implode('') }}</td>
                                 <td>
-                                    <button class="btn btn-outline-danger" data-bs-toggle="modal"
-                                        data-bs-target="#modalDelete{{ $users->id }}">Delete</button>
+                                    <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal"
+                                        data-bs-target="#delete{{ $d->id }}">delete</i></a>
+
                                 </td>
                             </tr>
                         @endforeach
