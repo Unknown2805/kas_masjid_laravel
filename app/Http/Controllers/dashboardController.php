@@ -32,18 +32,18 @@ class dashboardController extends Controller
         
 
         if(!isset($masjid)){
-            $tot_in_m = 0;
-            $tot_out_m = 0;
+            $tot_in_m = "0";
+            $tot_out_m = "0";
 
         }else{
             $tot_in_m = $masjid->sum('masuk');
             $tot_out_m = $masjid->sum('keluar');
 
         }
-        
+
         if(!isset($sosial)){
-            $tot_in_s = 0;
-            $tot_out_s = 0;
+            $tot_in_s = "0";
+            $tot_out_s = "0";
 
         }else{
             $tot_in_s = $sosial->sum('masuk');

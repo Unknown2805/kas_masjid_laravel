@@ -70,7 +70,7 @@ Route::post('kas-sosial/pengeluaran/tambah', [KasSosialController::class, 'store
 
 //edit data kas sosial
 Route::put('kas-sosial-pemasukan/edit/{id}', [KasSosialController::class, 'editPemasukan'])->name('kassosial.editMasuk');
-Route::put('kas-sosial-pengeluaran/edit/{id}', [KasSosialController::class, 'editPemasukan'])->name('kassosial.editMasuk');
+Route::put('kas-sosial-pengeluaran/edit/{id}', [KasSosialController::class, 'editPengeluaran'])->name('kassosial.editMasuk');
 
 //delete kas sosial
 Route::delete('/kas-sosial/delete/{id}', [KasSosialController::class, 'destroy']);

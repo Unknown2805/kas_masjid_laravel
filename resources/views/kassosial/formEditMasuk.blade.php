@@ -17,7 +17,7 @@
               </div>
               <div class="mb-3">
                 <label for="formGroupExampleInput2" class="form-label">Pemasukan</label>
-                <input type="text" class="form-control" value="Rp.{{number_format($d->masuk,0,'','.')}}" id="masuk" placeholder="Another input placeholder" name="masuk">
+                <input type="text"  class="form-control" value="{{number_format((float)$d->masuk,2,)}}"  placeholder="Another input placeholder" name="masuk">
               </div>
               <div class="mb-3">
                 <label for="formGroupExampleInput2" class="form-label">Tanggal</label>
@@ -36,29 +36,3 @@
   
     
 @endforeach
-<script type="text/javascript">
-	var masuk = document.getElementById('masuk');
-	masuk.addEventListener('keyup', function (e) {
-		// tambahkan 'Rp.' pada saat form di ketik
-		// gunakan fungsi formatmasuk() untuk mengubah angka yang di ketik menjadi format angka
-		masuk.value = formatmasuk(this.value, 'Rp ');
-	});
-
-	/* Fungsi formatmasuk */
-	function formatmasuk(angka, prefix) {
-		var number_string = angka.replace(/[^,\d]/g, '').toString(),
-			split = number_string.split(','),
-			sisa = split[0].length % 3,
-			masuk = split[0].substr(0, sisa),
-			ribuan = split[0].substr(sisa).match(/\d{3}/gi);
-
-		// tambahkan titik jika yang di input sudah menjadi angka ribuan
-		if (ribuan) {
-			separator = sisa ? '.' : '';
-			masuk += separator + ribuan.join('.');
-		}
-
-		masuk = split[1] != undefined ? masuk + ',' + split[1] : masuk;
-		return prefix == undefined ? masuk : (masuk ? 'Rp ' + masuk : '');
-	}
-</script>
