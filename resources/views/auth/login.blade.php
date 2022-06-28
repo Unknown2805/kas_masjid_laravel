@@ -15,26 +15,26 @@
     <div id="auth">
 
         <div class="row">
-            <div class="col-lg-5 col-12">
+            <div class="col-12 col-lg-5 ">
                 <div id="auth-left">
-                    <div class="auth-logo">
-                        <div class="text-center">
-                            <h2>
-                                <div class="text-center">
-                                    <img src="assets/images/logo/favicon.svg" class="avatar-xl mb-4" alt="Logo">
-                                    
-                                </div>
-                                Kas Masjid   
-                            </h2>
-                        </div>
-                        
-                    </div>
-
                     
-                    {{-- <p class="auth-subtitle mb-5">Log in with your data that you entered during registration.</p> --}}
-                    <h3 class="text-center mb-3">Login</h3>
                     <form method="POST" need-validation action="{{ route('login') }}">
                         @csrf
+
+                            <div class="text-center">
+                                <h5>
+                                    <div class="text-center">
+                                        <img src="assets/images/logo/favicon.svg" class="avatar-xl mb-2" alt="Logo" style="height:60px;width:60px;">
+    
+                                    </div>
+                                    <div class="text-center mb-5">
+
+                                    Kas Masjid
+                                    </div>
+                                </h5>
+                            </div>
+                        
+
                         <div class="form-group position-relative has-icon-left mb-0">
                             <input asp-for="email" type="email" name="email"
                                 class="form-control form-control-xl @error('email') is-invalid @enderror"
@@ -77,7 +77,7 @@
             </div>
             <div class="col-lg-7 d-none d-lg-block">
                 <div id="auth-right">
-                    
+
                     <img src="assets/images/faces/masjidsamping.jpg" width="900px" height="700px">
                 </div>
             </div>

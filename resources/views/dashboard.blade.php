@@ -114,7 +114,7 @@
             <div class="col-12 col-md-12">
                 <div class="row">
                     <div class="col-12 col-md-4">
-                        <div class="card shadow" style="height:220px">
+                        <div class="card shadow" style="height:260px;">
                         
 
 
@@ -184,24 +184,62 @@
 
                    
 
+                    
+
                     <div class="col-6 col-md-4" >
-                        <div class="card shadow" style="height:220px">
-                            <div class="card-header ">
-                                <h4>Visitors Profile</h4>
+                        <div class="card shadow" style="height:260px;">
+                            <div class="card-header">
+                                <h4>Saldo Kas Masjid saat ini</h4>
+                                <h5>Saldo: Rp.{{ $rek_m }}</h5>
                             </div>
+                                
+                            
                             <div class="card-body">
-                                <div id="chart-visitors-profile"></div>
+                                <div class="row">
+                                    
+                                    
+                                    <div class="col-6 col-md-6">
+                                        <div class="text-center" style="height: 125px;width:125px;">
+                                            <canvas id="d_masjid"></canvas>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-6">
+                                        <i class="bi bi-circle" style="color:#1fb553;"></i> Pemasukan
+                                        <br>
+                                        <i class="bi bi-circle" style="color:#d13f26;"></i> Pengeluaran 
+
+                                    </div>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
 
                     <div class="col-6 col-md-4" >
-                        <div class="card shadow" style="height:220px">
+                        <div class="card shadow" style="height:260px;">
                             <div class="card-header">
-                                <h4>Visitors Profile</h4>
+                                <h4>Saldo Kas Sosial saat ini</h4>
+                                <h5>Saldo: Rp.{{ $rek_s }}</h5>
                             </div>
+                                
+                            
                             <div class="card-body">
-                                <div id="chart-visitors-profile"></div>
+                                <div class="row">
+                                    
+                                    
+                                    <div class="col-6 col-md-6">
+                                        <div class="text-center" style="height: 125px;width:125px;">
+                                            <canvas id="d_sosial"></canvas>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-6">
+                                        <i class="bi bi-circle" style="color:#1fb553;"></i> Pemasukan
+                                        <br>
+                                        <i class="bi bi-circle" style="color:#d13f26;"></i> Pengeluaran 
+
+                                    </div>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -227,9 +265,9 @@
                             <div class="card-header ">
                                 <h4>Rekap kas Sosial saat ini</h4>
                             </div>
-                            <div class="card-body">
-                                {{-- <canvas id="myChart" width="400" height="400"></canvas> --}}
-                            </div>
+                            {{-- <div class="card-body text-center" style="height: 200px;width:200px;">
+                                <canvas id="myChart"></canvas>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -244,4 +282,80 @@
         @include('formEditMasjid')
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    {{-- CHART Masjid --}}
+    <script>
+        const masjid = {
+            // labels: [
+            //     'Laki-Laki',
+            //     'Perempuan'
+            // ],
+            datasets: [{
+                label: 'Gender',
+                data: ["{{ $tot_in_m }}","{{ $tot_out_m }}" ],
+                backgroundColor: [
+                    '#1fb553' ,
+                    '#d13524'
+                ],
+                hoverOffset: 4
+            }]
+        };
+
+        const masjidd = {
+            type: 'doughnut',
+            data: masjid,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                }
+            },
+        };
+
+        const chartmasjid = new Chart(
+            document.getElementById('d_masjid'),
+            masjidd
+        );
+    </script>
+
+    <script>
+        const sosial = {
+            // labels: [
+            //     'Laki-Laki',
+            //     'Perempuan'
+            // ],
+            datasets: [{
+                label: 'Gender1',
+                data: ["{{ $tot_in_s }}","{{ $tot_out_s }}"],
+                backgroundColor: [
+                    '#1fb553' ,
+                    '#d13524'
+                ],
+                hoverOffset: 4
+            }]
+        };
+
+        const sosiall = {
+            type: 'doughnut',
+            data: sosial,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                }
+            },
+        };
+
+        const chartsosial = new Chart(
+            document.getElementById('d_sosial'),
+            sosiall
+        );
+    </script>
+    {{-- CHART GENDER --}}
+
 @endsection
+

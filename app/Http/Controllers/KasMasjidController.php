@@ -7,6 +7,7 @@ use App\Models\KasMasjid;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Carbon;
+use App\Models\ProfileMasjid;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
@@ -27,9 +28,10 @@ class KasMasjidController extends Controller
 
     public function cetak_pdf() {
         $data = KasMasjid::all();
+        $data2 = ProfileMasjid::all();
 
 
-        $pdf = PDF::loadview('kasmasjid.rekap_pdf',['data'=>$data]);
+        $pdf = PDF::loadview('kasmasjid.rekap_pdf',['data'=>$data,'data2'=>$data2]);
             
         return $pdf->download('laporan-kas-masjid.pdf');
 

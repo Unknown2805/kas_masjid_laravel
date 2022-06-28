@@ -90,7 +90,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $d->tanggal }}</td>
                                 <td>{{ $d->uraian }}</td>
-                                <td>{{ $d->keluar }}</td>
+                                <td>Rp.{{ $d->keluar }}</td>
                                 <td>
                                     <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
                                         data-bs-target="#editKeluar{{ $d->id }}">Edit</i></a>

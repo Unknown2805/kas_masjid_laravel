@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\KasSosial;
+use App\Models\ProfileMasjid;
 use Barryvdh\DomPDF\Facade\Pdf;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -28,9 +29,9 @@ class KasSosialController extends Controller
 
     public function cetak_pdf() {
         $data = KasSosial::all();
+        $data2 = ProfileMasjid::all();
 
-
-        $pdf = PDF::loadview('kassosial.rekap_pdf',['data'=>$data]);
+        $pdf = PDF::loadview('kassosial.rekap_pdf',['data'=>$data,'data2'=>$data2]);
             
         return $pdf->download('laporan-kas-sosial.pdf');
 

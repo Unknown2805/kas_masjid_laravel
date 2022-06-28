@@ -8,7 +8,11 @@
                 <h1>Rekap Kas Masjid</h1>
             </div>
             <div class="card-body">
+                @if(!isset($data[0]->masuk))
+                <a></a>
+                @else
                 <a href="/rekap/masjid" class="btn btn-danger">CETAK PDF</a>
+                @endif
                 <table class="table table-striped" id="table1">
                     <thead>
                         <tr>
@@ -26,7 +30,7 @@
                                 <td>{{ $d->tanggal }}</td>
                                 <td>{{ $d->uraian }}</td>
                                 <td>{{ $d->masuk ? $d->masuk : 0 }}</td>
-                                <td>{{ $d->keluar ? $d->keluar : 0 }}</td>
+                                <td>Rp.{{ $d->keluar ? $d->keluar : 0 }}</td>
 
                             </tr>
                         @endforeach
