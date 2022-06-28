@@ -17,7 +17,7 @@
               </div>
               <div class="mb-3">
                 <label for="formGroupExampleInput2" class="form-label">Pemasukan</label>
-                <input type="text"  class="form-control" value="{{number_format((float)$d->masuk,2,)}}"  placeholder="Another input placeholder" name="masuk">
+                <input type="number"  class="form-control" value="{{$d->masuk}}"  placeholder="Another input placeholder" name="masuk">
               </div>
               <div class="mb-3">
                 <label for="formGroupExampleInput2" class="form-label">Tanggal</label>

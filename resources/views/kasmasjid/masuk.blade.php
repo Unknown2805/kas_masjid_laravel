@@ -86,7 +86,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $d->tanggal }}</td>
                                 <td>{{ $d->uraian }}</td>
-                                <td>Rp.{{ $d->masuk }}</td>
+                                <td>Rp. @money((float)"$d->masuk")</td>
                                 <td>
                                     <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
                                         data-bs-target="#editMasuk{{ $d->id }}">Edit</i></a>

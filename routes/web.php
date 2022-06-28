@@ -66,11 +66,11 @@ Route::get('/kas-sosial-pemasukan', [KasSosialController::class, 'masuk']);
 
 //post data kas sosial
 Route::post('kas-sosial/pemasukan/tambah', [KasSosialController::class, 'storePemasukan'])->name('kassosial.masuk');
-Route::post('kas-sosial/pengeluaran/tambah', [KasSosialController::class, 'storePengeluaran'])->name('kassosial.masuk');
+Route::post('kas-sosial/pengeluaran/tambah', [KasSosialController::class, 'storePengeluaran'])->name('kassosial.keluar');
 
 //edit data kas sosial
 Route::put('kas-sosial-pemasukan/edit/{id}', [KasSosialController::class, 'editPemasukan'])->name('kassosial.editMasuk');
-Route::put('kas-sosial-pengeluaran/edit/{id}', [KasSosialController::class, 'editPengeluaran'])->name('kassosial.editMasuk');
+Route::put('kas-sosial-pengeluaran/edit/{id}', [KasSosialController::class, 'editPengeluaran'])->name('kassosial.editKeluar');
 
 //delete kas sosial
 Route::delete('/kas-sosial/delete/{id}', [KasSosialController::class, 'destroy']);

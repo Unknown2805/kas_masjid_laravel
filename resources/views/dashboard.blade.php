@@ -190,7 +190,7 @@
                         <div class="card shadow" style="height:260px;">
                             <div class="card-header">
                                 <h4>Saldo Kas Masjid saat ini</h4>
-                                <h5>Saldo: Rp.{{ $rek_m }}</h5>
+                                <h5>Saldo: Rp.@money((float)"$rek_m")<h5>
                             </div>
                                 
                             
@@ -219,8 +219,8 @@
                         <div class="card shadow" style="height:260px;">
                             <div class="card-header">
                                 <h4>Saldo Kas Sosial saat ini</h4>
-                                <h5>Saldo: Rp.{{ $rek_s }}</h5>
-                            </div>
+                                <h5>Saldo: Rp.@money((float)"$rek_s")<h5>
+                                </div>
                                 
                             
                             <div class="card-body">

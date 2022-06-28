@@ -29,8 +29,8 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $d->tanggal }}</td>
                                 <td>{{ $d->uraian }}</td>
-                                <td>{{ $d->masuk ? $d->masuk : 0 }}</td>
-                                <td>Rp.{{ $d->keluar ? $d->keluar : 0 }}</td>
+                                <td>Rp. @money((float)"$d->masuk ? $d->masuk : 0") </td>
+                                <td>Rp. @money((float)"$d->keluar ? $d->keluar : 0")</td>
 
                             </tr>
                         @endforeach

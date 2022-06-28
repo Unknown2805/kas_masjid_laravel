@@ -35,8 +35,8 @@
             <tr>
 
 
-                <td>{{ $data[0]->sum('masuk') }}</td>
-                <td>{{ $data[0]->sum('keluar') }}</td>
+                <td>Rp. @money((float)$data[0]->sum('masuk'))</td>
+                <td>Rp. @money((float)$data[0]->sum('keluar'))</td>
 
 
 
@@ -62,8 +62,8 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $d->tanggal }}</td>
                     <td>{{ $d->uraian }}</td>
-                    <td>Rp.{{ $d->masuk ? $d->masuk : 0 }}</td>
-                    <td>Rp.{{ $d->keluar ? $d->keluar : 0 }}</td>
+                    <td>Rp. @money((float)"$d->masuk ? $d->masuk : 0") </td>
+                    <td>Rp. @money((float)"$d->keluar ? $d->keluar : 0")</td>
                 </tr>
             @endforeach
         </tbody>

@@ -20,8 +20,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="formGroupExampleInput2" class="form-label">Pengeluaran</label>
-                            <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="Pengeluaran"
-                                name="keluar">
+                            <input type="number"  class="form-control"  placeholder="Another input placeholder" name="keluar">
                         </div>
                         <div class="mb-3">
                             <label for="formGroupExampleInput2" class="form-label">Tanggal</label>
@@ -90,7 +89,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $d->tanggal }}</td>
                                 <td>{{ $d->uraian }}</td>
-                                <td>Rp.{{ $d->keluar }}</td>
+                                <td>Rp. @money((float)"$d->keluar")</td>
                                 <td>
                                     <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
                                         data-bs-target="#editKeluar{{ $d->id }}">Edit</i></a>
