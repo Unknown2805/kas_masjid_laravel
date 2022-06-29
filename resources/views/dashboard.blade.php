@@ -186,7 +186,7 @@
 
                     
 
-                    <div class="col-6 col-md-4" >
+                    <div class="col-12 col-md-4" >
                         <div class="card shadow" style="height:260px;">
                             <div class="card-header">
                                 <h4>Saldo Kas Masjid saat ini</h4>
@@ -204,9 +204,9 @@
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-6">
-                                        <i class="bi bi-circle" style="color:#1fb553;"></i> Pemasukan
+                                        <i class="bi bi-circle" style="color:#435EBE;"></i> Pemasukan
                                         <br>
-                                        <i class="bi bi-circle" style="color:#d13f26;"></i> Pengeluaran 
+                                        <i class="bi bi-circle" style="color:#43beaf;"></i> Pengeluaran      
 
                                     </div>
                                 </div>
@@ -215,7 +215,7 @@
                         </div>
                     </div>
 
-                    <div class="col-6 col-md-4" >
+                    <div class="col-12 col-md-4" >
                         <div class="card shadow" style="height:260px;">
                             <div class="card-header">
                                 <h4>Saldo Kas Sosial saat ini</h4>
@@ -233,9 +233,9 @@
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-6">
-                                        <i class="bi bi-circle" style="color:#1fb553;"></i> Pemasukan
+                                        <i class="bi bi-circle" style="color:#435EBE;"></i> Pemasukan
                                         <br>
-                                        <i class="bi bi-circle" style="color:#d13f26;"></i> Pengeluaran 
+                                        <i class="bi bi-circle" style="color:#43beaf;"></i> Pengeluaran 
 
                                     </div>
                                 </div>
@@ -250,24 +250,28 @@
             <div class="col-12 col-md-12">
                 <div class="row">
                     <div class="col-12 col-md-6">
-                        <div class="card shadow" style="height:260px">
+                        <div class="card shadow">
                             <div class="card-header">
                                 <h4>Rekap kas Masjid saat ini</h4>
                             </div>
-                            <div class="card-body shadow">
-                                {{-- <canvas id="myChart" width="400" height="400"></canvas> --}}
-                            </div>
+                           
+                                <div class="text-center  mb-3 px-5">
+                                    <canvas id="masjid_b"></canvas>
+                                </div>
+                           
                         </div>
                     </div>
                 
                     <div class="col-12 col-md-6">
-                        <div class="card shadow " style="height:260px">
+                        <div class="card shadow ">
                             <div class="card-header ">
                                 <h4>Rekap kas Sosial saat ini</h4>
                             </div>
-                            {{-- <div class="card-body text-center" style="height: 200px;width:200px;">
-                                <canvas id="myChart"></canvas>
-                            </div> --}}
+                         
+                                <div class="text-center mb-3 px-5">
+                                    <canvas id="sosial_b"></canvas>
+                                </div>
+                                                        
                         </div>
                     </div>
                 </div>
@@ -294,8 +298,8 @@
                 label: 'Gender',
                 data: ["{{ $tot_in_m }}","{{ $tot_out_m }}" ],
                 backgroundColor: [
-                    '#1fb553' ,
-                    '#d13524'
+                    '#435EBE' ,
+                    '#43beaf'
                 ],
                 hoverOffset: 4
             }]
@@ -330,8 +334,8 @@
                 label: 'Gender1',
                 data: ["{{ $tot_in_s }}","{{ $tot_out_s }}"],
                 backgroundColor: [
-                    '#1fb553' ,
-                    '#d13524'
+                    '#435EBE' ,
+                    '#43beaf'
                 ],
                 hoverOffset: 4
             }]
@@ -355,7 +359,139 @@
             sosiall
         );
     </script>
-    {{-- CHART GENDER --}}
+
+    <script>
+        const b_masjid = [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July',
+            'Aug',
+            'Sep',
+            'Oct',
+            'Nov',
+            'Dec'
+        ];
+
+        const b_masjidd = {
+            labels: b_masjid,
+            datasets: [{
+                label: 'Pemasukan',
+                backgroundColor: '#435EBE',
+                borderRadius: 4,
+                barThickness: 10,
+                
+                data: [
+                @foreach ($data_month_in_m as $ikm )
+                {{ $ikm }},
+                @endforeach
+                ]
+            }, {
+                label: 'Pengeluaran',
+                backgroundColor: '#43beaf',
+                borderRadius: 4,
+                barThickness: 10,
+                data: [
+                @foreach ($data_month_out_m as $okm)
+                {{ $okm }},
+                @endforeach
+                ],
+            }]
+        };
+
+        const bar_masjid = {
+            type: 'bar',
+            data: b_masjidd,
+            options: {
+                responsive: true,
+                indexAxis: 'x',
+                plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+          usePointStyle: true,
+        },
+                },},
+            }
+        };
+    </script>
+
+    <script>
+        const bulanan_masjid = new Chart(
+            document.getElementById('masjid_b'),
+            bar_masjid
+        );
+    </script>
+
+<script>
+    const b_sosial = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec'
+    ];
+
+    const b_sosiall = {
+        labels: b_sosial,
+        datasets: [{
+            label: 'Pemasukan',
+            backgroundColor: '#345EBE',
+            borderRadius: 4,
+            barThickness: 10,
+            data: [
+            @foreach ($data_month_in_s as $iks )
+            {{ $iks }},
+            @endforeach
+            ]
+        }, {
+            label: 'Pengeluaran',
+            backgroundColor:'#43beaf',
+            borderRadius: 4,
+            // borderSkipped: false,
+            barThickness: 10,
+            data: [
+            @foreach ($data_month_out_s as $oks)
+            {{ $oks }},
+            @endforeach
+            ],
+        }]
+    };
+
+    const bar_sosial = {
+        type: 'bar',
+        data: b_sosiall,
+        options: {
+            responsive: true,
+            indexAxis: 'x',
+            plugins: {
+            legend: {
+                position: 'bottom',
+                labels: {
+          usePointStyle: true,
+        },
+            },},
+        
+        }
+    };
+</script>
+
+<script>
+    const bulanan_sosial = new Chart(
+        document.getElementById('sosial_b'),
+        bar_sosial
+    );
+</script>
 
 @endsection
 

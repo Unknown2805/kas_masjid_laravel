@@ -7,6 +7,7 @@ use App\Models\Events;
 use App\Models\KasMasjid;
 use App\Models\KasSosial;
 use App\Models\ProfileMasjid;
+use Carbon\Carbon;
 
 class dashboardController extends Controller
 {
@@ -27,9 +28,7 @@ class dashboardController extends Controller
         $data = ProfileMasjid::all();
         $masjid = KasMasjid::all();
         $sosial = KasSosial::all();
-
-        
-        
+              
 
         if(!isset($masjid)){
             $tot_in_m = "0";
@@ -50,11 +49,56 @@ class dashboardController extends Controller
             $tot_out_s = $sosial->sum('keluar');
 
         }
-        
+
+        $this_year = Carbon::now()->format('Y');
+        $month_m = KasMasjid::where('tanggal','like', $this_year.'%')->get();
+        $month_s = KasSosial::where('tanggal','like', $this_year.'%')->get();
+
+        for ($i=1; $i <= 12; $i++){
+            $data_month_in_m[(int)$i]=0;
+            $data_month_out_m[(int)$i]=0;
+            $data_month_in_s[(int)$i]=0;
+            $data_month_out_s[(int)$i]=0;
+            
+        }
+
+        foreach ($month_m as $a) {
+            $bulan_in_m= explode('-',carbon::parse($a->tanggal)->format('Y-m-d'))[1];
+            $data_month_in_m[(int) $bulan_in_m]+= $a->masuk; 
+            $data_month_out_m[(int) $bulan_in_m]+= $a->keluar;        
+       
+        }
+
+
+
+        foreach ($month_s as $b) {
+            $bulan_in_s= explode('-',carbon::parse($b->tanggal)->format('Y-m-d'))[1];
+            $data_month_in_s[(int) $bulan_in_s]+=$b->masuk;   
+            $data_month_out_s[(int) $bulan_in_s]+=$b->keluar;                   
+        }
+
+// dd($data_month_out_m);  
         $rek_m = $tot_in_m - $tot_out_m;
         $rek_s = $tot_in_s - $tot_out_s;
+        
 
-        return view('dashboard', compact('data', 'tot_in_m', 'tot_out_m', 'rek_m', 'tot_in_s', 'tot_out_s', 'rek_s'));
+        return view('dashboard', compact(
+            'data',
+            'tot_in_m',
+            'tot_out_m',
+            'rek_m',
+            'tot_in_s',
+            'tot_out_s',
+            'rek_s',
+        ),
+       
+    
+    )
+        -> with('data_month_in_m', $data_month_in_m)
+        -> with('data_month_out_m', $data_month_out_m)
+        -> with('data_month_in_s', $data_month_in_s)
+        -> with('data_month_out_s', $data_month_out_s);    
+       
     }
 
 
