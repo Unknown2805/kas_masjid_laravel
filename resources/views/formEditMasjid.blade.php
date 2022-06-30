@@ -13,11 +13,11 @@
                 <div class="modal-body">
                       <div class="mb-3">
                         <label for="formGroupExampleInput" class="form-label">Nama Masjid</label>
-                        <input type="text" class="form-control" value="{{$d->masjid}}" id="formGroupExampleInput" placeholder="Uraian" name="masjid">
+                        <input type="text" class="form-control" value="{{$d->masjid}}" id="formGroupExampleInput" placeholder="Nama Masjid" name="masjid">
                       </div>
                       
                       <div class="mb-3">
-                        <label for="formGroupExampleInput2" class="form-label">Gambar Masjid</label>
+                        <label for="formGroupExampleInput2" class="form-label">Foto Profile</label>
                             <div class="col-md-8 mb-3">
                                 <img src="{{ asset('/storage/masjid/' .$d->image) }}" class="card-img" alt="..." style="height:180px;"/>
                             </div>

@@ -14,12 +14,12 @@
                     @csrf
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label for="formGroupExampleInput" class="form-label">Uraian</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Uraian" name="masjid">
+                            <label for="formGroupExampleInput" class="form-label">Nama Masjid</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nama Masjid" name="masjid">
                           </div>
                           <div class="mb-3">
-                            <label for="formGroupExampleInput2" class="form-label">Pemasukan</label>
-                            <input type="file" class="form-control" id="formGroupExampleInput2" placeholder="Pemasukan" name="image">
+                            <label for="formGroupExampleInput2" class="form-label">Foto Profile</label>
+                            <input type="file" class="form-control" id="formGroupExampleInput2" placeholder="Foto Profil" name="image">
                           </div>
                           
                     </div>
