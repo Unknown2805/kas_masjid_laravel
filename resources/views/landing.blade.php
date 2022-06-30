@@ -11,26 +11,33 @@
   </head>
   <body style="background-color:#ecf9f7;">      
 
-    <nav class="navbar navbar-expand-md">
+    {{-- <nav class="navbar navbar-expand-lg">
+      <b class="text-dark" style="font-size:22px">Kas Masjid</b>
       <div class="container">
-          <b class="text-dark" style="font-size:22px">Kas Masjid</b>
-
-          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav">
+        
+          <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            
+            <ul class="navbar-nav mr-auto">
               <li class="nav-item">
                 <a class="nav-link text-dark" href="/login" style="font-size:20px"><b>Login</b></a>
               </li>
             </ul>
           </div>
-        </div>
-      </nav>
+      </div>
+
+
+      <a class="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></span>
+      </a>
+    </nav> --}}
 
     
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand text-dark" href="#"><b>Kas Masjid</b></a>
+        
+      <a class="nav-item text-secondary" href="/login" style="font-size:20px">login </a>        
       
-      {{-- getwaves.io --}}
-      {{-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path fill="#2fac68" fill-opacity="1" d="M0,256L0,96L288,96L288,128L576,128L576,288L864,288L864,224L1152,224L1152,288L1440,288L1440,0L1152,0L1152,0L864,0L864,0L576,0L576,0L288,0L288,0L0,0L0,0Z"></path>
-      </svg> --}}
+    </nav>
       
   <section class="row ms-1 ml-1 mb-2 mt-0">
     
@@ -66,7 +73,7 @@
                   @foreach($data2 as $e)
                     <div class="card-group" style="height:284px;">
                       
-                      <div class="card mb-4 bg-light shadow">
+                      <div class="card mb-4 shadow bg-light ">
                         <div class="row">
 
                           <div class="col-12 col-md-12">
@@ -93,8 +100,8 @@
               </div>
 
               <div class="col-12 col-md-4">
-                <div class="card-group" style="height:250px;">
-                  <div class="card shadow" style="height:260px;">
+                <div class="card-group" style="height:250px;margin-bottom:30px;">
+                  <div class="card mb-4 shadow" style="height:260px;">
 
                       <div class="card-header">
                         <h4>Saldo Kas Masjid saat ini</h4>
@@ -127,11 +134,11 @@
 
               </div>
 
-              <div class="col-12 col-md-4">
+              <div class="col-12 col-md-4 mb-4">
 
                 
                 <div class="card-group" style="height:250px;">
-                  <div class="card shadow" style="height:260px;">
+                  <div class="card shadow bg-light" style="height:260px;">
 
                       <div class="card-header">
                         <h4>Saldo Kas Sosial saat ini</h4>
@@ -169,7 +176,7 @@
             
             <div class="row">
 
-                  <div class="text-center text-dark mb-3 mt-2">
+                  <div class="text-center text-dark mb-2 mt-3">
                     <h5><b>Event Masjid</b></h5>
                   </div>
 
@@ -206,7 +213,7 @@
                     @foreach ($data->slice(0,3) as $d)
                       <div class="col-12 col-md-12">
                         <div class="card-group">
-                          <div class="card mb-4 shadow" style="background-color:#eeeee4">
+                          <div class="card mb-4 shadow bg-light">
                               <div class="row">
                                 <div class="col-12 col-md-4">
                                   <img src={{ asset('/storage/event/' .$d->gambar) }} class="card-img" style="height:250px;"/>
