@@ -5,7 +5,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header bg-primary">
-                    <h2 class="modal-title" style="color: white">Add User</h2>
+                    <h2 class="modal-title" style="color: white">Add Admin</h2>
                     <button style="color: white" type="button" class="" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>

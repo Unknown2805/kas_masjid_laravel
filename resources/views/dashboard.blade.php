@@ -7,7 +7,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Profile</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action={{ url('dashboard/tambah') }} method="POST" enctype="multipart/form-data">
@@ -33,7 +33,73 @@
     </div>
     
     <div class="page-heading">
-        <h3>Dashboard</h3>
+        @if (!isset($data[0]->masjid))
+                            
+                            @hasrole('admin')
+                            <a data-bs-toggle="modal" data-bs-target="#exampleModal">
+        
+
+                                    <div class="text-start">
+                                        <div class="avatar avatar-lg">  
+                                            <img src="assets/images/faces/masjidsamping.jpg"/> 
+                                        </div>  
+                                        <span class="font-bold ms-1" style="font-size: 24px">
+                                            Nama Masjid
+                                        </span>
+                            
+                                    </div>
+                            </a>
+                            @endhasrole
+                            @hasrole('bendahara')
+                            <a data-bs-toggle="modal" data-bs-target="#">      
+
+                                    <div class="text-start">
+                                        <div class="avatar avatar-lg">  
+                                            <img src="assets/images/faces/masjidsamping.jpg"/> 
+                                        </div>  
+                                        <span class="font-bold ms-1" style="font-size: 24px">
+                                            Nama Masjid
+                                        </span>
+                                    </div>
+                               
+                            </a>
+                            @endhasrole 
+
+                            @else
+                   
+                   
+                            @foreach ($data as $d)
+                                @hasrole('admin')
+                                    <a data-bs-toggle="modal" data-bs-target="#editMasjid{{ $d->id }}">
+                                
+                                        <div class="text-start">
+                                            <div class="avatar avatar-lg">  
+                                                <img src="{{ asset('/storage/masjid/'.$d->image) }}">
+                                            </div>
+                                            <span class="font-bold ms-1" style="font-size: 24px">
+                                                {{ $d->masjid }}
+                                            </span>  
+                                        </div>
+                                        
+                                    </a>
+                                @endhasrole
+                                @hasrole('bendahara')
+                                    <a data-bs-toggle="modal" data-bs-target="#">
+                                
+                                        <div class="text-start">
+                                            <div class="avatar avatar-lg">  
+                                                <img src="{{ asset('/storage/masjid/'.$d->image) }}">
+                                            </div>
+                                            <span class="font-bold ms-1" style="font-size: 24px">
+                                                {{ $d->masjid }}
+                                            </span>  
+                                        </div>
+                                        
+                                    </a>
+                                @endhasrole
+                            @endforeach
+
+                            @endif
     </div>
 
     <div class="page-content">
@@ -41,7 +107,7 @@
             <div class="col-12 col-md-12">
                 <div class="row">
                     
-                    <div class="col-12 col-md-4" >
+                    <div class="col-12 col-md-6" >
                         <div class="card shadow" style="height:260px;">
                             <div class="card-header">
                                 <h4>Saldo Kas Masjid saat ini</h4>
@@ -76,7 +142,7 @@
                         </div>
                     </div>
 
-                    <div class="col-12 col-md-4" >
+                    <div class="col-12 col-md-6" >
                         <div class="card shadow" style="height:260px;">
                             <div class="card-header">
                                 <h4>Saldo Kas Sosial saat ini</h4>
@@ -109,75 +175,6 @@
                                 </div>
                                 
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-4">
-                        <div class="card shadow" style="height:260px;">
-                        
-
-
-                            @if (!isset($data[0]->masjid))
-                                
-                            <div class="card-body" >
-
-                                <div class="text-center">
-                                    <div class="avatar avatar-xl mt-2">  
-                                        <img src="assets/images/faces/masjidsamping.jpg"/>
-                                    </div>  
-                                </div>
-                        
-                                <div class="text-center">
-                                    <div class="mt-4">                              
-                                        <h5 class="font-bold">Nama Masjid</h5>                                
-                                    </div>
-                                </div>
-
-                                @hasrole('admin')
-
-                                    <div class="text-center" >
-                                        <a class="btn btn-primary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal">tambah</a>
-                                    </div>
-
-                                @endhasrole  
-                            
-                            </div>
-                            
-
-                            @else
-                   
-                   
-                            @foreach ($data as $d)
-                            
-                            
-                            
-                            <div class="card-body" >
-
-                                <div class="text-center">
-                                    <div class="avatar avatar-xl mt-2">  
-                                        <img src="{{ asset('/storage/masjid/'.$d->image) }}">
-                                    </div>  
-                                </div>
-                        
-                                <div class="text-center">
-                                    <div class="mt-4">                              
-                                        <h5 class="font-bold">{{ $d->masjid }}</h5>                                
-                                    </div>
-                                </div>
-                                @hasrole('admin')
-
-                                <div class="text-center">
-                                    <a class="btn btn-outline-success btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#editMasjid{{ $d->id }}">Edit</a>
-                                </div>
-                                
-                                @endhasrole
-
-                            </div>
-
-                           
-                            @endforeach
-
-                            @endif       
                         </div>
                     </div>
 
