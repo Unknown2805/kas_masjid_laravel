@@ -17,8 +17,8 @@ class KasSosialTable extends Migration
             $table->id();
             $table->date('tanggal');
             $table->longtext('uraian');
-            $table->string('masuk')->nullable();
-            $table->string('keluar')->nullable();
+            $table->integer('masuk')->nullable();
+            $table->integer('keluar')->nullable();
             $table->string('jenis');
             $table->timestamps();
         });

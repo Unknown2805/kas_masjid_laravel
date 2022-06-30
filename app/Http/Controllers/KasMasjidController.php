@@ -21,6 +21,8 @@ class KasMasjidController extends Controller
     public function rekap()
     {
         $data = KasMasjid::all();
+        $data2 = ProfileMasjid::all();
+        
         // dd($data);
 
         return view('kasmasjid.rekap',compact('data'));

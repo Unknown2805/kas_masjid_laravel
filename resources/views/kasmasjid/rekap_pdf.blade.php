@@ -30,16 +30,29 @@
 
                 <th>Total Pemasukan</th>
                 <th>Total Pengeluaran</th>
+                <th>Saldo Akhir</th>
             </tr>
         </thead>
         <tbody>
 
-            @php $i=1 @endphp
+            @php 
+            $i=1;
+            $tot_rek_m = $data[0]->sum('masuk') - $data[0]->sum('keluar');
+            
+            @endphp
             <tr>
-
+            
 
                 <td>Rp. @money((float)$data[0]->sum('masuk'))</td>
                 <td>Rp. @money((float)$data[0]->sum('keluar'))</td>
+                    @if ($tot_rek_m == 0)
+                        <td>Saldo: kosong<td>
+                    @elseif ($tot_rek_m <= -1)
+                        <td>Kurang: Rp.@money((float)"$tot_rek_m")<td>
+                    @else
+                        <td>Saldo: Rp.@money((float)"$tot_rek_m")<td>
+                    @endif
+                
 
 
 

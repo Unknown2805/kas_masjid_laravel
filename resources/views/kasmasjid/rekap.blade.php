@@ -8,7 +8,9 @@
                 <h1>Rekap Kas Masjid</h1>
             </div>
             <div class="card-body">
-                @if(!isset($data[0]->masuk))
+                @if(!isset($data2[0]->masjid))
+                <a></a>
+                @elseif(!isset($data[0]->masuk))
                 <a></a>
                 @else
                 <a href="/rekap/masjid" class="btn btn-danger">CETAK PDF</a>

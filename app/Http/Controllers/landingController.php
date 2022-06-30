@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Events;
 use App\Models\ProfileMasjid;
+use App\Models\KasMasjid;
+use App\Models\KasSosial;
 
 class landingController extends Controller
 {
@@ -17,7 +19,45 @@ class landingController extends Controller
     {
         $data = Events::all();
         $data2 = ProfileMasjid::all();
-        return view('landing',compact('data','data2'));
+        $masjid = KasMasjid::all();
+        $sosial = KasSosial::all();
+              
+
+        if(!isset($masjid)){
+            $tot_in_m = "0";
+            $tot_out_m = "0";
+
+        }else{
+            $tot_in_m = $masjid->sum('masuk');
+            $tot_out_m = $masjid->sum('keluar');
+
+        }
+
+        if(!isset($sosial)){
+            $tot_in_s = "0";
+            $tot_out_s = "0";
+
+        }else{
+            $tot_in_s = $sosial->sum('masuk');
+            $tot_out_s = $sosial->sum('keluar');
+
+        }
+
+        $rek_m = $tot_in_m - $tot_out_m;
+        $rek_s = $tot_in_s - $tot_out_s;
+
+        
+        return view('landing',compact(
+            'data',
+            'data2',
+            'tot_in_m',
+            'tot_out_m',
+            'rek_m',
+            'tot_in_s',
+            'tot_out_s',
+            'rek_s',
+
+        ));
     }
          
     public function index()

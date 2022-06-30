@@ -36,83 +36,82 @@
         <h3>Dashboard</h3>
     </div>
 
-    {{-- <div class="page-contesnt">
-        <div class="row">
-            <div class="col-6 col-lg-3 col-md-6">
-                <div class="card shadow">
-                    <div class="card-body px-3 py-4-5">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="stats-icon purple">
-                                    <i class="iconly-boldShow"></i>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <h6 class="text-muted font-semibold">Profile Views</h6>
-                                <h6 class="font-extrabold mb-0">112.000</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-lg-3 col-md-6">
-                <div class="card shadow">
-                    <div class="card-body px-3 py-4-5">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="stats-icon blue">
-                                    <i class="iconly-boldProfile"></i>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <h6 class="text-muted font-semibold">Followers</h6>
-                                <h6 class="font-extrabold mb-0">183.000</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-lg-3 col-md-6">
-                <div class="card shadow">
-                    <div class="card-body px-3 py-4-5">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="stats-icon green">
-                                    <i class="iconly-boldAdd-User"></i>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <h6 class="text-muted font-semibold">Following</h6>
-                                <h6 class="font-extrabold mb-0">80.000</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-lg-3 col-md-6">
-                <div class="card shadow">
-                    <div class="card-body px-3 py-4-5">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="stats-icon red">
-                                    <i class="iconly-boldBookmark"></i>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <h6 class="text-muted font-semibold">Saved Post</h6>
-                                <h6 class="font-extrabold mb-0">112</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-
     <div class="page-content">
         <section>
             <div class="col-12 col-md-12">
                 <div class="row">
+                    
+                    <div class="col-12 col-md-4" >
+                        <div class="card shadow" style="height:260px;">
+                            <div class="card-header">
+                                <h4>Saldo Kas Masjid saat ini</h4>
+                                
+                                @if ($rek_m == 0)
+                                    <h6>Saldo: kosong<h6>
+                                @elseif ($rek_m <= -1)
+                                    <h6>Kurang: Rp.@money((float)"$rek_m")<h6>
+                                @else
+                                    <h6>Saldo: Rp.@money((float)"$rek_m")<h6>
+                                @endif
+                            </div>
+                                
+                            
+                            <div class="card-body">
+                                <div class="row">
+                                    
+                                    
+                                    <div class="col-6 col-md-6">
+                                        <div class="text-center" style="height: 125px;width:125px;">
+                                            <canvas id="d_masjid"></canvas>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-6">
+                                        <h5 style="font-size:15px"><i class="bi bi-circle-fill" style="color:#435EBE;"></i> Pemasukan</h5>
+                                        <br>
+                                        <h5 style="font-size:15px"> <i class="bi bi-circle-fill" style="color:#43beaf;"></i> Pengeluaran</h5>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-4" >
+                        <div class="card shadow" style="height:260px;">
+                            <div class="card-header">
+                                <h4>Saldo Kas Sosial saat ini</h4>
+                                @if ($rek_s == 0)
+                                   <h6>Saldo: kosong<h6>
+                                @elseif ($rek_s <= -1)
+                                   <h6>Kurang: Rp.@money((float)"$rek_s")<h6>
+                                @else
+                                    <h6>Saldo: Rp.@money((float)"$rek_s")<h6>
+                                @endif
+                                
+                                </div>
+                                
+                            
+                            <div class="card-body">
+                                <div class="row">
+                                    
+                                    
+                                    <div class="col-6 col-md-6">
+                                        <div class="text-center" style="height: 125px;width:125px;">
+                                            <canvas id="d_sosial"></canvas>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-6">
+                                        <h5 style="font-size:15px"><i class="bi bi-circle-fill" style="color:#435EBE;"></i> Pemasukan</h5>
+                                        <br>
+                                        <h5 style="font-size:15px"> <i class="bi bi-circle-fill" style="color:#43beaf;"></i> Pengeluaran</h5> 
+
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="col-12 col-md-4">
                         <div class="card shadow" style="height:260px;">
                         
@@ -182,68 +181,6 @@
                         </div>
                     </div>
 
-                   
-
-                    
-
-                    <div class="col-12 col-md-4" >
-                        <div class="card shadow" style="height:260px;">
-                            <div class="card-header">
-                                <h4>Saldo Kas Masjid saat ini</h4>
-                                <h5>Saldo: Rp.@money((float)"$rek_m")<h5>
-                            </div>
-                                
-                            
-                            <div class="card-body">
-                                <div class="row">
-                                    
-                                    
-                                    <div class="col-6 col-md-6">
-                                        <div class="text-center" style="height: 125px;width:125px;">
-                                            <canvas id="d_masjid"></canvas>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-6">
-                                        <i class="bi bi-circle" style="color:#435EBE;"></i> Pemasukan
-                                        <br>
-                                        <i class="bi bi-circle" style="color:#43beaf;"></i> Pengeluaran      
-
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-4" >
-                        <div class="card shadow" style="height:260px;">
-                            <div class="card-header">
-                                <h4>Saldo Kas Sosial saat ini</h4>
-                                <h5>Saldo: Rp.@money((float)"$rek_s")<h5>
-                                </div>
-                                
-                            
-                            <div class="card-body">
-                                <div class="row">
-                                    
-                                    
-                                    <div class="col-6 col-md-6">
-                                        <div class="text-center" style="height: 125px;width:125px;">
-                                            <canvas id="d_sosial"></canvas>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-6">
-                                        <i class="bi bi-circle" style="color:#435EBE;"></i> Pemasukan
-                                        <br>
-                                        <i class="bi bi-circle" style="color:#43beaf;"></i> Pengeluaran 
-
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
 
@@ -252,7 +189,7 @@
                     <div class="col-12 col-md-6">
                         <div class="card shadow">
                             <div class="card-header">
-                                <h4>Rekap kas Masjid saat ini</h4>
+                                <h4>Rekap kas Masjid bulan ini</h4>
                             </div>
                            
                                 <div class="text-center  mb-3 px-5">
@@ -265,7 +202,7 @@
                     <div class="col-12 col-md-6">
                         <div class="card shadow ">
                             <div class="card-header ">
-                                <h4>Rekap kas Sosial saat ini</h4>
+                                <h4>Rekap kas Sosial bulan ini</h4>
                             </div>
                          
                                 <div class="text-center mb-3 px-5">
@@ -290,12 +227,12 @@
     {{-- CHART Masjid --}}
     <script>
         const masjid = {
-            // labels: [
-            //     'Laki-Laki',
-            //     'Perempuan'
-            // ],
+            labels: [
+                'Jumlah',
+                'Jumlah'
+            ],
             datasets: [{
-                label: 'Gender',
+                label: '',
                 data: ["{{ $tot_in_m }}","{{ $tot_out_m }}" ],
                 backgroundColor: [
                     '#435EBE' ,
@@ -312,7 +249,7 @@
                 responsive: true,
                 plugins: {
                     legend: {
-                        position: 'top',
+                        position: 'end',
                     },
                 }
             },
@@ -326,12 +263,12 @@
 
     <script>
         const sosial = {
-            // labels: [
-            //     'Laki-Laki',
-            //     'Perempuan'
-            // ],
+            labels: [
+                'Jumlah',
+                'Jumlah'
+            ],
             datasets: [{
-                label: 'Gender1',
+                label: '',
                 data: ["{{ $tot_in_s }}","{{ $tot_out_s }}"],
                 backgroundColor: [
                     '#435EBE' ,
@@ -348,7 +285,7 @@
                 responsive: true,
                 plugins: {
                     legend: {
-                        position: 'top',
+                        position: 'end',
                     },
                 }
             },

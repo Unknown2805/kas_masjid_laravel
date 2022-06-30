@@ -77,7 +77,6 @@ class dashboardController extends Controller
             $data_month_out_s[(int) $bulan_in_s]+=$b->keluar;                   
         }
 
-// dd($data_month_out_m);  
         $rek_m = $tot_in_m - $tot_out_m;
         $rek_s = $tot_in_s - $tot_out_s;
         

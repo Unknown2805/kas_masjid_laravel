@@ -22,6 +22,7 @@ class KasSosialController extends Controller
     public function rekap()
     {
         $data = KasSosial::all();
+        $data2 = ProfileMasjid::all();
         // dd($data);
 
         return view('kassosial.rekap',compact('data'));
