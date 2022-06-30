@@ -25,7 +25,7 @@ class KasSosialController extends Controller
         $data2 = ProfileMasjid::all();
         // dd($data);
 
-        return view('kassosial.rekap',compact('data'));
+        return view('kassosial.rekap',compact('data','data2'));
     }
 
     public function cetak_pdf() {

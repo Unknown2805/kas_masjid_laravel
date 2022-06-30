@@ -25,7 +25,7 @@ class KasMasjidController extends Controller
         
         // dd($data);
 
-        return view('kasmasjid.rekap',compact('data'));
+        return view('kasmasjid.rekap',compact('data','data2'));
     }
 
     public function cetak_pdf() {
