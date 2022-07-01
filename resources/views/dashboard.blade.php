@@ -32,18 +32,18 @@
         </div>
     </div>
     
-    <div class="page-heading">
+    <div class="page-heading" style="cursor:pointer">
         @if (!isset($data[0]->masjid))
                             
                             @hasrole('admin')
                             <a data-bs-toggle="modal" data-bs-target="#exampleModal">
         
 
-                                    <div class="text-start">
+                                    <div class="text-start" >
                                         <div class="avatar avatar-lg">  
                                             <img src="assets/images/faces/masjidsamping.jpg"/> 
                                         </div>  
-                                        <span class="font-bold ms-1" style="font-size: 24px">
+                                        <span class="font-bold ms-1" style="font-size: 24px" >
                                             Nama Masjid
                                         </span>
                             
@@ -186,7 +186,7 @@
                     <div class="col-12 col-md-6">
                         <div class="card shadow">
                             <div class="card-header">
-                                <h4>Rekap kas Masjid bulan ini</h4>
+                                <h4>Rekap kas Masjid tahun ini</h4>
                             </div>
                            
                                 <div class="text-center  mb-3 px-5">
@@ -199,7 +199,7 @@
                     <div class="col-12 col-md-6">
                         <div class="card shadow ">
                             <div class="card-header ">
-                                <h4>Rekap kas Sosial bulan ini</h4>
+                                <h4>Rekap kas Sosial tahun ini</h4>
                             </div>
                          
                                 <div class="text-center mb-3 px-5">
