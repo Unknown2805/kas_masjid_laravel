@@ -51,8 +51,7 @@ class KasSosialController extends Controller
 
         return view('kassosial.keluar',compact('data'));
     }
-
-    //tambah data kas sosial
+//tambah kas sosial
     public function storePemasukan(Request $request) {
         $this->validate($request,[
             'tanggal'=> 'required',
@@ -61,17 +60,18 @@ class KasSosialController extends Controller
 
         ]);
         $data = new KasSosial();
+        $result = preg_replace("/[^0-9]/", "", $request->masuk);
         $data-> tanggal = $request-> tanggal;
         $data-> uraian = $request-> uraian;
-        $data-> masuk = $request-> masuk;
+        $data-> masuk = $result;
         $data-> jenis = 'masuk';
+            // dd($data);
         $data-> save();
 
         Alert::success('Sukses!','Berhasil Menambah Data');
         return redirect()->back();
         
     }
-
 
     public function storePengeluaran(Request $request) {
         $this->validate($request,[
@@ -81,9 +81,10 @@ class KasSosialController extends Controller
 
         ]);
         $data = new KasSosial();
+        $hasil = preg_replace("/[^0-9]/", "", $request->keluar);
         $data-> tanggal = $request-> tanggal;
         $data-> uraian = $request-> uraian;
-        $data-> keluar = $request-> keluar;
+        $data-> keluar = $hasil;
         $data-> jenis = 'keluar';
         $data-> save();
 
@@ -91,8 +92,8 @@ class KasSosialController extends Controller
         return redirect()->back();
         
     }
-    
-    //edit data kas sosial
+
+//edit data kas sosial
     public function editPemasukan(Request $request,$id) {
         $data = KasSosial::where('id',$id)->firstOrFail();
 
@@ -103,15 +104,17 @@ class KasSosialController extends Controller
         ]);
         // dd($request);
 
-        $data->tanggal = $request->tanggal;
-        $data->uraian = $request->uraian;
-        $data->masuk = $request->masuk;
+        $result = preg_replace("/[^0-9]/", "", $request->masuk);
+        $data-> tanggal = $request-> tanggal;
+        $data-> uraian = $request-> uraian;
+        $data-> masuk = $result;
         $data->update();
 
         Alert::success('Sukses!','Berhasil Merubah Data');
+
         return redirect()->back();
     }
-
+  
     public function editPengeluaran(Request $request,$id) {
         $data = KasSosial::where('id',$id)->firstOrFail();
 
@@ -122,15 +125,17 @@ class KasSosialController extends Controller
         ]);
         // dd($request);
 
-        $data->tanggal = $request->tanggal;
-        $data->uraian = $request->uraian;
-        $data->keluar = $request->keluar;
+        $hasil = preg_replace("/[^0-9]/", "", $request->keluar);
+        $data-> tanggal = $request-> tanggal;
+        $data-> uraian = $request-> uraian;
+        $data-> keluar = $hasil;
         // dd($data);
         $data->update();
 
-        Alert::success('Sukses!','Berhasil Merubah Data');
+        // Alert::success('Sukses!','Berhasil Merubah Data');
         return redirect()->back();
     }
+
 
 
     public function destroy($id)

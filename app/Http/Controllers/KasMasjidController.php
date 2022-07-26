@@ -61,9 +61,10 @@ class KasMasjidController extends Controller
 
         ]);
         $data = new KasMasjid();
+        $result = preg_replace("/[^0-9]/", "", $request->masuk);
         $data-> tanggal = $request-> tanggal;
         $data-> uraian = $request-> uraian;
-        $data-> masuk = $request-> masuk;
+        $data-> masuk = $result;
         $data-> jenis = 'masuk';
             // dd($data);
         $data-> save();
@@ -81,9 +82,10 @@ class KasMasjidController extends Controller
 
         ]);
         $data = new KasMasjid();
+        $hasil = preg_replace("/[^0-9]/", "", $request->keluar);
         $data-> tanggal = $request-> tanggal;
         $data-> uraian = $request-> uraian;
-        $data-> keluar = $request-> keluar;
+        $data-> keluar = $hasil;
         $data-> jenis = 'keluar';
         $data-> save();
 
@@ -103,9 +105,10 @@ class KasMasjidController extends Controller
         ]);
         // dd($request);
 
-        $data->tanggal = $request->tanggal;
-        $data->uraian = $request->uraian;
-        $data->masuk = $request->masuk;
+        $result = preg_replace("/[^0-9]/", "", $request->masuk);
+        $data-> tanggal = $request-> tanggal;
+        $data-> uraian = $request-> uraian;
+        $data-> masuk = $result;
         $data->update();
 
         Alert::success('Sukses!','Berhasil Merubah Data');
@@ -123,13 +126,14 @@ class KasMasjidController extends Controller
         ]);
         // dd($request);
 
-        $data->tanggal = $request->tanggal;
-        $data->uraian = $request->uraian;
-        $data->keluar = $request->keluar;
+        $hasil = preg_replace("/[^0-9]/", "", $request->keluar);
+        $data-> tanggal = $request-> tanggal;
+        $data-> uraian = $request-> uraian;
+        $data-> keluar = $hasil;
         // dd($data);
         $data->update();
 
-        Alert::success('Sukses!','Berhasil Merubah Data');
+        // Alert::success('Sukses!','Berhasil Merubah Data');
         return redirect()->back();
     }
 
@@ -140,7 +144,6 @@ class KasMasjidController extends Controller
 
         $data->delete();
 
-        Alert::success('Sukses!','Berhasil Menghapus Data');
         return redirect()->back();
     }
 }

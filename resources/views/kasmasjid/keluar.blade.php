@@ -20,7 +20,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="formGroupExampleInput2" class="form-label">Pengeluaran</label>
-                            <input type="number"  class="form-control"  placeholder="Another input placeholder" name="keluar" autocomplete="off">
+                            <input type="text"  class="form-control"  id="tambahom" placeholder="Another input placeholder" name="keluar" autocomplete="off">
                         </div>
                         <div class="mb-3">
                             <label for="formGroupExampleInput2" class="form-label">Tanggal</label>
@@ -105,4 +105,58 @@
         </div>
         @include('kasmasjid/formEditKeluar')
     </section>
+
+    <script type="text/javascript">
+        var editom = document.getElementById('editom');
+        editom.addEventListener('keyup', function (e) {
+          // tambahkan 'Rp.' pada saat form di ketik
+          // gunakan fungsi formateditom() untuk mengubah angka yang di ketik menjadi format angka
+          editom.value = formateditom(this.value, 'Rp ');
+        });
+      
+        /* Fungsi formateditom */
+        function formateditom(angka, prefix) {
+          var number_string = angka.replace(/[^,\d]/g, '').toString(),
+            split = number_string.split(','),
+            sisa = split[0].length % 3,
+            editom = split[0].substr(0, sisa),
+            ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+      
+          // tambahkan titik jika yang di input sudah menjadi angka ribuan
+          if (ribuan) {
+            separator = sisa ? '.' : '';
+            editom += separator + ribuan.join('.');
+          }
+      
+          editom = split[1] != undefined ? editom + ',' + split[1] : editom;
+          return prefix == undefined ? editom : (editom ? 'Rp ' + editom : '');
+        }
+      </script>
+    <script type="text/javascript">
+        var tambahom = document.getElementById('tambahom');
+        tambahom.addEventListener('keyup', function (e) {
+            // tambahomkan 'Rp.' pada saat form di ketik
+          // gunakan fungsi formattambahom() untuk mengubah angka yang di ketik menjadi format angka
+          tambahom.value = formattambahom(this.value, 'Rp ');
+        });
+        
+        /* Fungsi formattambahom */
+        function formattambahom(angka, prefix) {
+            var number_string = angka.replace(/[^,\d]/g, '').toString(),
+            split = number_string.split(','),
+            sisa = split[0].length % 3,
+            tambahom = split[0].substr(0, sisa),
+            ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+            
+            // tambahomkan titik jika yang di input sudah menjadi angka ribuan
+            if (ribuan) {
+                separator = sisa ? '.' : '';
+                tambahom += separator + ribuan.join('.');
+            }
+            
+            tambahom = split[1] != undefined ? tambahom + ',' + split[1] : tambahom;
+            return prefix == undefined ? tambahom : (tambahom ? 'Rp ' + tambahom : '');
+        }
+        </script>
+
 @endsection

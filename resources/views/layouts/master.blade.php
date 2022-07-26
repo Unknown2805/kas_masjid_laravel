@@ -176,7 +176,6 @@
 
 
     <script src="assets/js/extensions/ui-chartjs.js"></script>
-    
 </body>
 
 </html>

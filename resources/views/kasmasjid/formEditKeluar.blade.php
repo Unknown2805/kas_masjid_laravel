@@ -17,7 +17,7 @@
               </div>
               <div class="mb-3">
                 <label for="formGroupExampleInput2" class="form-label">Pengeluaran</label>
-                <input type="number"  class="form-control" value="{{ $d->keluar}}"  placeholder="Another input placeholder" name="keluar" autocomplete="off">
+                <input type="text"  class="form-control" value="{{ $d->keluar}}" id="editom" placeholder="Another input placeholder" name="keluar" autocomplete="off">
               </div>
               <div class="mb-3">
                 <label for="formGroupExampleInput2" class="form-label">Tanggal</label>

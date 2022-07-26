@@ -15,11 +15,11 @@
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="formGroupExampleInput" class="form-label">Uraian</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Uraian" name="uraian">
+                            <input type="text" class="form-control"  placeholder="Uraian" name="uraian">
                           </div>
                           <div class="mb-3">
                             <label for="formGroupExampleInput2" class="form-label">Pemasukan</label>
-                            <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="Pemasukan" name="masuk" autocomplete="off">
+                            <input type="text" class="form-control masjid" id="tambahim" placeholder="Pemasukan" name="masuk" autocomplete="off">
                           </div>
                           <div class="mb-3">
                             <label for="formGroupExampleInput2" class="form-label">Tanggal</label>
@@ -61,7 +61,6 @@
         </div>
     </div>
     @endforeach
-
     <section class="section">
         <h1>Pemasukan</h1>
         <div class="card card-info ">
@@ -89,7 +88,7 @@
                                 <td>Rp. @money((float)"$d->masuk")</td>
                                 <td>
                                     <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
-                                        data-bs-target="#editMasuk{{ $d->id }}">Edit</i></a>
+                                    data-bs-target="#editMasuk{{ $d->id }}">Edit</i></a>
                                     <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete{{ $d->id }}">delete</i></a>
                                 </td>
                             </tr>
@@ -100,5 +99,62 @@
             </div>
         </div>
         @include('kasmasjid/formEditMasuk')
+
     </section>
+    
+
+    <script type="text/javascript">
+        var editim = document.getElementById('editim');
+        editim.addEventListener('keyup', function (e) {
+          // tambahkan 'Rp.' pada saat form di ketik
+          // gunakan fungsi formateditim() untuk mengubah angka yang di ketik menjadi format angka
+          editim.value = formateditim(this.value, 'Rp ');
+        });
+      
+        /* Fungsi formateditim */
+        function formateditim(angka, prefix) {
+          var number_string = angka.replace(/[^,\d]/g, '').toString(),
+            split = number_string.split(','),
+            sisa = split[0].length % 3,
+            editim = split[0].substr(0, sisa),
+            ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+      
+          // tambahkan titik jika yang di input sudah menjadi angka ribuan
+          if (ribuan) {
+            separator = sisa ? '.' : '';
+            editim += separator + ribuan.join('.');
+          }
+      
+          editim = split[1] != undefined ? editim + ',' + split[1] : editim;
+          return prefix == undefined ? editim : (editim ? 'Rp ' + editim : '');
+        }
+      </script>
+    <script type="text/javascript">
+        var tambahim = document.getElementById('tambahim');
+        tambahim.addEventListener('keyup', function (e) {
+            // tambahimkan 'Rp.' pada saat form di ketik
+          // gunakan fungsi formattambahim() untuk mengubah angka yang di ketik menjadi format angka
+          tambahim.value = formattambahim(this.value, 'Rp ');
+        });
+        
+        /* Fungsi formattambahim */
+        function formattambahim(angka, prefix) {
+            var number_string = angka.replace(/[^,\d]/g, '').toString(),
+            split = number_string.split(','),
+            sisa = split[0].length % 3,
+            tambahim = split[0].substr(0, sisa),
+            ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+            
+            // tambahimkan titik jika yang di input sudah menjadi angka ribuan
+            if (ribuan) {
+                separator = sisa ? '.' : '';
+                tambahim += separator + ribuan.join('.');
+            }
+            
+            tambahim = split[1] != undefined ? tambahim + ',' + split[1] : tambahim;
+            return prefix == undefined ? tambahim : (tambahim ? 'Rp ' + tambahim : '');
+        }
+        </script>
+
+
 @endsection
