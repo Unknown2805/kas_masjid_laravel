@@ -17,7 +17,7 @@
               </div>
               <div class="mb-3">
                 <label for="formGroupExampleInput2" class="form-label">Pemasukan</label> 
-                <input type="text" class="form-control" value="{{ $d->masuk}}"   id="editim" placeholder="Another input placeholder"  name="masuk" autocomplete="off">
+                <input type="text" class="form-control" value="{{ $d->masuk}}" placeholder="Another input placeholder"  name="masuk" autocomplete="off" onkeyup="formatbaru(event)">
               </div>
               <div class="mb-3">
                 <label for="formGroupExampleInput2" class="form-label">Tanggal</label>

@@ -20,7 +20,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="formGroupExampleInput2" class="form-label">Pengeluaran</label>
-                            <input type="text"  class="form-control"  placeholder="Another input placeholder"id="tambahos" name="keluar" autocomplete="off">
+                            <input type="text"  class="form-control"  placeholder="Another input placeholder" name="keluar" autocomplete="off" onkeyup="formatbaru(event)">
                         </div>
                         <div class="mb-3">
                             <label for="formGroupExampleInput2" class="form-label">Tanggal</label>
@@ -107,55 +107,32 @@
     </section>
     
     <script type="text/javascript">
-        var editos = document.getElementById('editos');
-        editos.addEventListener('keyup', function (e) {
-          // tambahkan 'Rp.' pada saat form di ketik
-          // gunakan fungsi formateditos() untuk mengubah angka yang di ketik menjadi format angka
-          editos.value = formateditos(this.value, 'Rp ');
-        });
+     
+
+        function formatbaru(e){
+            let hasil = formatedit(e.target.value);
+
+            e.target.value = hasil;
+        }
       
-        /* Fungsi formateditos */
-        function formateditos(angka, prefix) {
+        /* Fungsi formateditom */
+        function formatedit(angka) {
+            var prefix = "Rp";
           var number_string = angka.replace(/[^,\d]/g, '').toString(),
             split = number_string.split(','),
             sisa = split[0].length % 3,
-            editos = split[0].substr(0, sisa),
+            edit = split[0].substr(0, sisa),
             ribuan = split[0].substr(sisa).match(/\d{3}/gi);
       
           // tambahkan titik jika yang di input sudah menjadi angka ribuan
           if (ribuan) {
             separator = sisa ? '.' : '';
-            editos += separator + ribuan.join('.');
+            edit += separator + ribuan.join('.');
           }
       
-          editos = split[1] != undefined ? editos + ',' + split[1] : editos;
-          return prefix == undefined ? editos : (editos ? 'Rp ' + editos : '');
+          edit = split[1] != undefined ? edit + ',' + split[1] : edit;
+          return prefix == undefined ? edit : (edit ? 'Rp ' + edit : '');
         }
       </script>
-    <script type="text/javascript">
-        var tambahos = document.getElementById('tambahos');
-        tambahos.addEventListener('keyup', function (e) {
-            // tambahoskan 'Rp.' pada saat form di ketik
-          // gunakan fungsi formattambahos() untuk mengubah angka yang di ketik menjadi format angka
-          tambahos.value = formattambahos(this.value, 'Rp ');
-        });
-        
-        /* Fungsi formattambahos */
-        function formattambahos(angka, prefix) {
-            var number_string = angka.replace(/[^,\d]/g, '').toString(),
-            split = number_string.split(','),
-            sisa = split[0].length % 3,
-            tambahos = split[0].substr(0, sisa),
-            ribuan = split[0].substr(sisa).match(/\d{3}/gi);
-            
-            // tambahoskan titik jika yang di input sudah menjadi angka ribuan
-            if (ribuan) {
-                separator = sisa ? '.' : '';
-                tambahos += separator + ribuan.join('.');
-            }
-            
-            tambahos = split[1] != undefined ? tambahos + ',' + split[1] : tambahos;
-            return prefix == undefined ? tambahos : (tambahos ? 'Rp ' + tambahos : '');
-        }
-        </script>
+
 @endsection

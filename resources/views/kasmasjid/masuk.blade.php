@@ -19,7 +19,7 @@
                           </div>
                           <div class="mb-3">
                             <label for="formGroupExampleInput2" class="form-label">Pemasukan</label>
-                            <input type="text" class="form-control masjid" id="tambahim" placeholder="Pemasukan" name="masuk" autocomplete="off">
+                            <input type="text" class="form-control masjid" placeholder="Pemasukan" name="masuk" autocomplete="off" onkeyup="formatbaru(event)">
                           </div>
                           <div class="mb-3">
                             <label for="formGroupExampleInput2" class="form-label">Tanggal</label>
@@ -104,57 +104,32 @@
     
 
     <script type="text/javascript">
-        var editim = document.getElementById('editim');
-        editim.addEventListener('keyup', function (e) {
-          // tambahkan 'Rp.' pada saat form di ketik
-          // gunakan fungsi formateditim() untuk mengubah angka yang di ketik menjadi format angka
-          editim.value = formateditim(this.value, 'Rp ');
-        });
+     
+
+        function formatbaru(e){
+            let hasil = formatedit(e.target.value);
+
+            e.target.value = hasil;
+        }
       
-        /* Fungsi formateditim */
-        function formateditim(angka, prefix) {
+        /* Fungsi formateditom */
+        function formatedit(angka) {
+            var prefix = "Rp";
           var number_string = angka.replace(/[^,\d]/g, '').toString(),
             split = number_string.split(','),
             sisa = split[0].length % 3,
-            editim = split[0].substr(0, sisa),
+            edit = split[0].substr(0, sisa),
             ribuan = split[0].substr(sisa).match(/\d{3}/gi);
       
           // tambahkan titik jika yang di input sudah menjadi angka ribuan
           if (ribuan) {
             separator = sisa ? '.' : '';
-            editim += separator + ribuan.join('.');
+            edit += separator + ribuan.join('.');
           }
       
-          editim = split[1] != undefined ? editim + ',' + split[1] : editim;
-          return prefix == undefined ? editim : (editim ? 'Rp ' + editim : '');
+          edit = split[1] != undefined ? edit + ',' + split[1] : edit;
+          return prefix == undefined ? edit : (edit ? 'Rp ' + edit : '');
         }
       </script>
-    <script type="text/javascript">
-        var tambahim = document.getElementById('tambahim');
-        tambahim.addEventListener('keyup', function (e) {
-            // tambahimkan 'Rp.' pada saat form di ketik
-          // gunakan fungsi formattambahim() untuk mengubah angka yang di ketik menjadi format angka
-          tambahim.value = formattambahim(this.value, 'Rp ');
-        });
-        
-        /* Fungsi formattambahim */
-        function formattambahim(angka, prefix) {
-            var number_string = angka.replace(/[^,\d]/g, '').toString(),
-            split = number_string.split(','),
-            sisa = split[0].length % 3,
-            tambahim = split[0].substr(0, sisa),
-            ribuan = split[0].substr(sisa).match(/\d{3}/gi);
-            
-            // tambahimkan titik jika yang di input sudah menjadi angka ribuan
-            if (ribuan) {
-                separator = sisa ? '.' : '';
-                tambahim += separator + ribuan.join('.');
-            }
-            
-            tambahim = split[1] != undefined ? tambahim + ',' + split[1] : tambahim;
-            return prefix == undefined ? tambahim : (tambahim ? 'Rp ' + tambahim : '');
-        }
-        </script>
-
 
 @endsection

@@ -20,7 +20,7 @@
               </div>
               <div class="mb-3">
                 <label for="formGroupExampleInput2" class="form-label">Pemasukan</label>
-                <input type="text" class="form-control" placeholder="Pemasukan" id="tambahis" name="masuk" autocomplete="off">
+                <input type="text" class="form-control" placeholder="Pemasukan" id="tambahis" name="masuk" autocomplete="off" onkeyup="formatbaru(event)">
               </div>
               <div class="mb-3">
                 <label for="formGroupExampleInput2" class="form-label">Tanggal</label>
@@ -102,55 +102,32 @@
 </section>
 
 <script type="text/javascript">
-    var editis = document.getElementById('editis');
-    editis.addEventListener('keyup', function (e) {
-      // tambahkan 'Rp.' pada saat form di ketik
-      // gunakan fungsi formateditis() untuk mengubah angka yang di ketik menjadi format angka
-      editis.value = formateditis(this.value, 'Rp ');
-    });
-  
-    /* Fungsi formateditis */
-    function formateditis(angka, prefix) {
-      var number_string = angka.replace(/[^,\d]/g, '').toString(),
-        split = number_string.split(','),
-        sisa = split[0].length % 3,
-        editis = split[0].substr(0, sisa),
-        ribuan = split[0].substr(sisa).match(/\d{3}/gi);
-  
-      // tambahkan titik jika yang di input sudah menjadi angka ribuan
-      if (ribuan) {
-        separator = sisa ? '.' : '';
-        editis += separator + ribuan.join('.');
-      }
-  
-      editis = split[1] != undefined ? editis + ',' + split[1] : editis;
-      return prefix == undefined ? editis : (editis ? 'Rp ' + editis : '');
+     
+
+  function formatbaru(e){
+      let hasil = formatedit(e.target.value);
+
+      e.target.value = hasil;
+  }
+
+  /* Fungsi formateditom */
+  function formatedit(angka) {
+      var prefix = "Rp";
+    var number_string = angka.replace(/[^,\d]/g, '').toString(),
+      split = number_string.split(','),
+      sisa = split[0].length % 3,
+      edit = split[0].substr(0, sisa),
+      ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+    // tambahkan titik jika yang di input sudah menjadi angka ribuan
+    if (ribuan) {
+      separator = sisa ? '.' : '';
+      edit += separator + ribuan.join('.');
     }
-  </script>
-<script type="text/javascript">
-    var tambahis = document.getElementById('tambahis');
-    tambahis.addEventListener('keyup', function (e) {
-        // tambahiskan 'Rp.' pada saat form di ketik
-      // gunakan fungsi formattambahis() untuk mengubah angka yang di ketik menjadi format angka
-      tambahis.value = formattambahis(this.value, 'Rp ');
-    });
-    
-    /* Fungsi formattambahis */
-    function formattambahis(angka, prefix) {
-        var number_string = angka.replace(/[^,\d]/g, '').toString(),
-        split = number_string.split(','),
-        sisa = split[0].length % 3,
-        tambahis = split[0].substr(0, sisa),
-        ribuan = split[0].substr(sisa).match(/\d{3}/gi);
-        
-        // tambahiskan titik jika yang di input sudah menjadi angka ribuan
-        if (ribuan) {
-            separator = sisa ? '.' : '';
-            tambahis += separator + ribuan.join('.');
-        }
-        
-        tambahis = split[1] != undefined ? tambahis + ',' + split[1] : tambahis;
-        return prefix == undefined ? tambahis : (tambahis ? 'Rp ' + tambahis : '');
-    }
-    </script>
+
+    edit = split[1] != undefined ? edit + ',' + split[1] : edit;
+    return prefix == undefined ? edit : (edit ? 'Rp ' + edit : '');
+  }
+</script>
+
 @endsection
