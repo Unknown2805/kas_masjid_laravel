@@ -78,7 +78,7 @@
             <div class="col-lg-7 d-none d-lg-block">
                 <div id="auth-right">
 
-                    <img src="assets/images/faces/masjidsamping.jpg" width="900px" height="700px">
+                    <img src="assets/images/faces/masjidsamping.jpg" width="100%" height="100%">
                 </div>
             </div>
         </div>

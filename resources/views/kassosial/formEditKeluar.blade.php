@@ -1,6 +1,6 @@
 @foreach ($data as $d)
 
-<div class="modal fade" id="editKeluar{{ $d->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="editKeluar{{ $d->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -33,6 +33,4 @@
     </div>
   </div>
 
-  
-    
 @endforeach
