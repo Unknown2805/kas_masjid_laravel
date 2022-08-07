@@ -33,7 +33,7 @@
         <tbody>
 
             @php 
-            $i=1 
+            $i=1;
             $tot_rek_s = $data[0]->sum('masuk') - $data[0]->sum('keluar');
             
             @endphp
