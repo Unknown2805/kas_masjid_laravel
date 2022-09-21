@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Laporan Rekapan Kas Sosial</title>
+    <title>Data Rekap Barang</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
@@ -14,50 +14,65 @@
             font-size: 9pt;
         }
     </style>
+
+    {{-- @foreach ($profile as $p)
+        <div class="text-center mb-3 mt-3">
+
+            <h5>{{ $p->gudang }}</h5>
+            <p style="font-size:12px">{{ $p->alamat }}, {{ $p->telepon }}</p>
+            <br>
+            <p>{{ \Carbon\Carbon::parse($tgl1)->format('d/m/Y') }} - {{ \Carbon\Carbon::parse($tgl2)->format('d/m/Y') }}
+            </p>
+            <hr>
+
+        </div>
+    @endforeach --}}
+
     <center>
         @foreach ($data2 as $e)
             <h5>{{ $e->masjid }}</h4>
         @endforeach
-        <h6>{{ \Carbon\Carbon::now()->format('d-m-Y') }}</h6>
+        <p>{{ \Carbon\Carbon::parse($tgl1)->format('d/m/Y') }} - {{ \Carbon\Carbon::parse($tgl2)->format('d/m/Y') }}
     </center>
+    <hr>
 
     <table class='table table-bordered'>
+        {{-- total keuangan --}}
         <thead>
             <tr>
 
                 <th>Total Pemasukan</th>
                 <th>Total Pengeluaran</th>
-                <th>Total Saldo</th>
+                <th>Saldo Akhir</th>
             </tr>
         </thead>
-        <tbody>
 
+        <tbody>
             @php
                 $i = 1;
-                $tot_rek_s = $data[0]->sum('masuk') - $data[0]->sum('keluar');
-                
+                $tot_rek_m = $data[0]->sum('masuk') - $data[0]->sum('keluar');
             @endphp
+
             <tr>
-
-
                 <td>Rp. @money((float) $data[0]->sum('masuk'))</td>
                 <td>Rp. @money((float) $data[0]->sum('keluar'))</td>
-                @if ($tot_rek_s == 0)
+                @if ($tot_rek_m == 0)
                     <td>Saldo: kosong
-                    <td>
-                    @elseif ($tot_rek_s <= -1)
-                    <td>Kurang: Rp.@money((float) "$tot_rek_s")</td>
-                @else
-                    <td>Saldo: Rp.@money((float) "$tot_rek_s")</td>
+                    </td>
+                    @elseif ($tot_rek_m <= -1)
+                    <td>Kurang: Rp.@money((float) "$tot_rek_m")
+                    </td>
+                    @else
+                    <td>Saldo: Rp.@money((float) "$tot_rek_m")
+                    </td>
                 @endif
-
-
-
             </tr>
 
         </tbody>
     </table>
+    {{-- TUTUP TOTAL KEUANGAN --}}
 
+    {{-- Data Uraian Masuk Keluat --}}
     <table class='table table-bordered'>
         <thead>
             <tr>
@@ -81,11 +96,7 @@
             @endforeach
         </tbody>
     </table>
-
-
-
-
-
+    {{-- Tutup Data Uraian Masuk Keluar --}}
 
 </body>
 

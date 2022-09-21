@@ -2,49 +2,67 @@
 
 
 @section('main')
+    <section class="section">
+        <div class="card">
+            <div class="card-header">
+                <h1>Rekap Kas Sosial</h1>
+            </div>
 
+            <div class="card card-info ">
+                <div class="card-body">
+                    <div class="col-6 col-md-12">
+                        <form action="/report/periode/barang" method="POST">
+                            @csrf
+                            <div class="row">
+                                <div class="col-12 col-md-4">
+                                    <input class="form-control" type="date" name="tgl1">
+                                </div>
+                                <div class="col-12 col-md-4">
+                                    <input class="form-control" type="date" name="tgl2">
+                                </div>
+                                <div class="col-12 col-md-4">
+                                    <button type="submit" class="btn btn-danger ">CETAK Periode</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
+            <div class="card-body">
+                @if (!isset($data2[0]->masjid))
+                    <a></a>
+                @elseif(!isset($data[0]->masuk))
+                    <a></a>
+                @else
+                    <a href="/rekap/sosial" class="btn btn-danger">CETAK PDF</a>
+                @endif
+                <table class="table table-striped" id="table1">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tanggal</th>
+                            <th>Uraian</th>
+                            <th>Pemasukan</th>
+                            <th>Pengeluaran</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($data as $d)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $d->tanggal }}</td>
+                                <td>{{ $d->uraian }}</td> 
+                                <td>Rp. @money((float) "$d->masuk ? $d->masuk : 0") </td>
+                                <td>Rp. @money((float) "$d->keluar ? $d->keluar : 0")</td>
 
+                            </tr>
+                        @endforeach
 
-<section class="section">
-    <div class="card">
-        <div class="card-header">
-            <h1>Rekap Kas Sosial</h1>   
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div class="card-body">
-            @if(!isset($data2[0]->masjid))
-                <a></a>
-            @elseif(!isset($data[0]->masuk))
-                <a></a>
-            @else
-                <a href="/rekap/sosial" class="btn btn-danger">CETAK PDF</a>
-            @endif
-            <table class="table table-striped" id="table1">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Tanggal</th>
-                        <th>Uraian</th>
-                        <th>Pemasukan</th>
-                        <th>Pengeluaran</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($data as $d)
-                    <tr>
-                        <td>{{$loop->iteration}}</td>
-                        <td>{{$d->tanggal}}</td>
-                        <td>{{$d->uraian}}</td>
-                        <td>Rp. @money((float)"$d->masuk ? $d->masuk : 0") </td>
-                        <td>Rp. @money((float)"$d->keluar ? $d->keluar : 0")</td>
-                       
-                    </tr>
-                    @endforeach
-                    
-                </tbody>
-            </table>
-        </div>
-    </div>
 
-</section>
+    </section>
 @endsection

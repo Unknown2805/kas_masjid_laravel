@@ -9,6 +9,7 @@ use App\Http\Controllers\BendaharaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileMasjidController;
 use App\Http\Controllers\landingController;
+use App\Models\KasMasjid;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -36,6 +37,10 @@ Route::get('/login', [LoginController::class, 'login']);
 Route::get('/dashboard', [dashboardController::class, 'dashboard'])->name('dashboard');
 Route::post('/dashboard/tambah', [App\Http\Controllers\ProfileMasjidController::class, 'store']);
 Route::put('/dashboard/edit/{id}', [App\Http\Controllers\ProfileMasjidController::class, 'EditMasjid']);
+
+Route::post('/report/periode/barang', [KasMasjidController::class, 'cetak_periode_pdf']);
+
+Route::post('/report/periode/barang', [KasSosialController::class, 'cetak_periode_pdf']);
 
 //get data kas masjid
 Route::get('/kas-masjid-rekap', [KasMasjidController::class, 'rekap']);

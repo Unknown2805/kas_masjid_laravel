@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Kas Masjid</title>
+    <title>Login - Kas Karang Taruna</title>
     <link rel="stylesheet" href="assets/css/main/app.css">
     <link rel="stylesheet" href="assets/css/pages/auth.css">
     <link rel="shortcut icon" href="assets/images/logo/favicon.svg" type="image/x-icon">
@@ -29,7 +29,7 @@
                                     </div>
                                     <div class="text-center mb-5">
 
-                                    Kas Masjid
+                                    Kas Karang Taruna
                                     </div>
                                 </h5>
                             </div>
@@ -78,7 +78,7 @@
             <div class="col-lg-7 d-none d-lg-block">
                 <div id="auth-right">
 
-                    <img src="assets/images/faces/masjidsamping.jpg" width="100%" height="100%">
+                    <img src="assets/images/faces/desa.jpg" width="900px" height="655px">
                 </div>
             </div>
         </div>

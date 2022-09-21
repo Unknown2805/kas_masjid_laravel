@@ -1,14 +1,14 @@
+{{-- NEW HASIL PDF --}}
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title>Laporan Rekapan Kas Masjid</title>
+    <title>Laporan Rekapan Kas Karang Taruna</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
-
     <style type="text/css">
         table tr td,
         table tr th {
@@ -16,15 +16,16 @@
         }
     </style>
 
-
     <center>
         @foreach ($data2 as $e)
             <h5>{{ $e->masjid }}</h4>
         @endforeach
         <h6>{{ \Carbon\Carbon::now()->format('d-m-Y') }}</h6>
     </center>
+    <hr>
 
-	<table class='table table-bordered'>
+    <table class='table table-bordered'>
+        {{-- total keuangan --}}
         <thead>
             <tr>
 
@@ -33,34 +34,33 @@
                 <th>Saldo Akhir</th>
             </tr>
         </thead>
+
         <tbody>
-
-            @php 
-            $i=1;
-            $tot_rek_m = $data[0]->sum('masuk') - $data[0]->sum('keluar');
-            
+            @php
+                $i = 1;
+                $tot_rek_m = $data[0]->sum('masuk') - $data[0]->sum('keluar');
             @endphp
+
             <tr>
-            
-
-                <td>Rp. @money((float)$data[0]->sum('masuk'))</td>
-                <td>Rp. @money((float)$data[0]->sum('keluar'))</td>
-                    @if ($tot_rek_m == 0)
-                        <td>Saldo: kosong<td>
+                <td>Rp. @money((float) $data[0]->sum('masuk'))</td>
+                <td>Rp. @money((float) $data[0]->sum('keluar'))</td>
+                @if ($tot_rek_m == 0)
+                    <td>Saldo: kosong
+                    </td>
                     @elseif ($tot_rek_m <= -1)
-                        <td>Kurang: Rp.@money((float)"$tot_rek_m")<td>
+                    <td>Kurang: Rp.@money((float) "$tot_rek_m")
+                    </td>
                     @else
-                        <td>Saldo: Rp.@money((float)"$tot_rek_m")<td>
-                    @endif
-                
-
-
-
+                    <td>Saldo: Rp.@money((float) "$tot_rek_m")
+                    </td>
+                @endif
             </tr>
 
         </tbody>
     </table>
+    {{-- TUTUP TOTAL KEUANGAN --}}
 
+    {{-- Data Uraian Masuk Keluat --}}
     <table class='table table-bordered'>
         <thead>
             <tr>
@@ -78,17 +78,13 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $d->tanggal }}</td>
                     <td>{{ $d->uraian }}</td>
-                    <td>Rp. @money((float)"$d->masuk ? $d->masuk : 0") </td>
-                    <td>Rp. @money((float)"$d->keluar ? $d->keluar : 0")</td>
+                    <td>Rp. @money((float) "$d->masuk ? $d->masuk : 0") </td>
+                    <td>Rp. @money((float) "$d->keluar ? $d->keluar : 0")</td>
                 </tr>
             @endforeach
         </tbody>
     </table>
-
-
-    
-
-
+    {{-- Tutup Data Uraian Masuk Keluar --}}
 
 </body>
 

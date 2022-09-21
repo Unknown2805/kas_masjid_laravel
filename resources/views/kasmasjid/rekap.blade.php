@@ -5,8 +5,30 @@
     <section class="section">
         <div class="card">
             <div class="card-header">
-                <h1>Rekap Kas Masjid</h1>
+                <h1>Rekap Kas Karang Taruna</h1>
             </div>
+
+            <div class="card card-info ">
+                <div class="card-body">
+                    <div class="col-6 col-md-12">
+                        <form action="/report/periode/barang" method="POST">
+                            @csrf
+                            <div class="row">
+                                <div class="col-12 col-md-4">
+                                    <input class="form-control" type="date" name="tgl1">
+                                </div>
+                                <div class="col-12 col-md-4">
+                                    <input class="form-control" type="date" name="tgl2">
+                                </div>
+                                <div class="col-12 col-md-4">
+                                    <button type="submit" class="btn btn-danger ">CETAK Periode</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
             <div class="card-body">
                 @if(!isset($data2[0]->masjid))
                 <a></a>

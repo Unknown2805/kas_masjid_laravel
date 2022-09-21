@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Laporan Rekapan Kas Sosial</title>
+    <title>Data Rekap Barang</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
@@ -14,12 +14,27 @@
             font-size: 9pt;
         }
     </style>
+
+    {{-- @foreach ($profile as $p)
+        <div class="text-center mb-3 mt-3">
+
+            <h5>{{ $p->gudang }}</h5>
+            <p style="font-size:12px">{{ $p->alamat }}, {{ $p->telepon }}</p>
+            <br>
+            <p>{{ \Carbon\Carbon::parse($tgl1)->format('d/m/Y') }} - {{ \Carbon\Carbon::parse($tgl2)->format('d/m/Y') }}
+            </p>
+            <hr>
+
+        </div>
+    @endforeach --}}
+
     <center>
         @foreach ($data2 as $e)
             <h5>{{ $e->masjid }}</h4>
         @endforeach
-        <h6>{{ \Carbon\Carbon::now()->format('d-m-Y') }}</h6>
+        <p>{{ \Carbon\Carbon::parse($tgl1)->format('d/m/Y') }} - {{ \Carbon\Carbon::parse($tgl2)->format('d/m/Y') }}
     </center>
+    <hr>
 
     <table class='table table-bordered'>
         <thead>
@@ -81,11 +96,6 @@
             @endforeach
         </tbody>
     </table>
-
-
-
-
-
 
 </body>
 

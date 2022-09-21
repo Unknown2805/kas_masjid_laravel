@@ -36,8 +36,36 @@ class KasMasjidController extends Controller
         $pdf = PDF::loadview('kasmasjid.rekap_pdf',['data'=>$data,'data2'=>$data2]);
             
         return $pdf->download('laporan-kas-masjid.pdf');
+    }
 
+    public function cetak_periode_pdf(Request $request)
+    {
 
+        $tgl1 = carbon::parse($request->tgl1)->format('Y-m-d H:i:s');
+        $tgl2 = carbon::parse($request->tgl2)->format('Y-m-d H:i:s');
+        $data = KasMasjid::whereBetween('tanggal', [$tgl1, $tgl2])->orderBy('tanggal','asc')->get();
+        $data2 = ProfileMasjid::all();
+
+        // // dd($data);
+        // $pdf = PDF::loadview('pdf.rekap_periode_pdf', [
+        //     'data' => $data,
+        //     'tgl1' => $tgl1,
+        //     'tgl2' => $tgl2,
+        //     'profile' => $profile,
+        //     'tot_all' => $tot_all,
+        //     'tot_m' => $tot_m,
+        //     'tot_k' => $tot_k,
+        //     'tot_r' => $tot_r,
+        // ]);
+            // dd($data);
+        $pdf = PDF::loadview('kasmasjid.rekap_periode_pdf',[
+            'data'=>$data,
+            'data2'=>$data2,
+            'tgl1' => $tgl1,
+            'tgl2' => $tgl2,
+        ]);
+
+        return $pdf->download('laporan-rekap-periode-barang.pdf');
     }
 
     public function masuk() {
