@@ -74,15 +74,15 @@
                         <li class="sidebar-item  has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-bell-fill"></i>
-                                <span>Kas Karang Taruna</span>
+                                <span>Kas Masjid</span>
                             </a>
                             <ul class="submenu ">
                                 <li class="submenu-item {{ request()->is('kas-masjid-pemasukan*') ? 'active' : '' }}">
-                                    <a href={{ url('kas-masjid-pemasukan') }}>Pemasukan Kas Kartar</a>
+                                    <a href={{ url('kas-masjid-pemasukan') }}>Pemasukan Kas Masjid</a>
                                 </li>
                                 <li
                                     class="submenu-item {{ request()->is('kas-masjid-pengeluaran*') ? 'active' : '' }}">
-                                    <a href={{ url('kas-masjid-pengeluaran') }}>Pengeluaran Kas Kartar</a>
+                                    <a href={{ url('kas-masjid-pengeluaran') }}>Pengeluaran Kas Masjid</a>
                                 </li>
                             </ul>
                         </li>
@@ -111,7 +111,7 @@
                             </a>
                             <ul class="submenu ">
                                 <li class="submenu-item {{ request()->is('kas-masjid-rekap*') ? 'active' : '' }}">
-                                    <a href={{ url('kas-masjid-rekap') }}>Rekap Kas Kartar</a>
+                                    <a href={{ url('kas-masjid-rekap') }}>Rekap Kas Masjid</a>
                                 </li>
                                 <li class="submenu-item {{ request()->is('kas-sosial-rekap*') ? 'active' : '' }}">
                                     <a href={{ url('kas-sosial-rekap') }}>Rekap Kas Sosial</a>
@@ -124,7 +124,7 @@
                         <li class="sidebar-item  ">
                             <a href="{{ url('/events') }}" class='sidebar-link'>
                                 <i class="bi bi-calendar-event-fill"></i>
-                                <span>Event Karang Taruna</span>
+                                <span>Event Masjid</span>
                             </a>
                         </li>
                         @hasrole('admin')

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Kas Karang Taruna</title>
+    <title>Login - Kas Masjid</title>
     <link rel="stylesheet" href="assets/css/main/app.css">
     <link rel="stylesheet" href="assets/css/pages/auth.css">
     <link rel="shortcut icon" href="assets/images/logo/favicon.svg" type="image/x-icon">
@@ -29,7 +29,7 @@
                                     </div>
                                     <div class="text-center mb-5">
 
-                                    Kas Karang Taruna
+                                    Kas Masjid
                                     </div>
                                 </h5>
                             </div>

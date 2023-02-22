@@ -4,7 +4,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Pengeluaran Kas Karang Taruna</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Pengeluaran Kas Masjid</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <form action={{url('kas-masjid-pengeluaran/edit/' . $d->id)}} method="POST" enctype="multipart/form-data">

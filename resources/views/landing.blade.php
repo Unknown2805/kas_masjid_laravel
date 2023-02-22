@@ -36,7 +36,7 @@
 
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand text-dark" href="#"><b>Kas Karang Taruna</b></a>
+        <a class="navbar-brand text-dark" href="#"><b>Kas Masjid</b></a>
 
         <a class="nav-item text-secondary" href="/login" style="font-size:20px">login </a>
 
@@ -62,7 +62,7 @@
                                 <div class="col-12 col-md-12 mt-2">
                                     <div class="judul" style="font-size:20rem ;">
                                         <div class="text-center">
-                                            <h5 class="card-title">Nama Karang Taruna</h5>
+                                            <h5 class="card-title">Nama Masjid</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -107,7 +107,7 @@
                     <div class="card mb-4 shadow" style="height:260px;">
 
                         <div class="card-header">
-                            <h4>Saldo Kas Kartar saat ini</h4>
+                            <h4>Saldo Kas Masjid saat ini</h4>
                             <h5>Saldo: Rp.@money((float) "$rek_m")<h5>
                         </div>
 
@@ -180,7 +180,7 @@
         <div class="row">
 
             <div class="text-center text-dark mb-2 mt-3">
-                <h5><b>Event Karang Taruna</b></h5>
+                <h5><b>Event Masjid</b></h5>
             </div>
 
             @if (!isset($data[0]->gambar))
@@ -218,7 +218,7 @@
                             <div class="card mb-4 shadow bg-light">
                                 <div class="row">
                                     <div class="col-12 col-md-4">
-                                        <img src={{ asset('/storage/event/' . $d->gambar) }} class="card-img"
+                                        <img src="{{ asset('/storage/event/' . $d->gambar) }}" class="card-img"
                                             style="height:250px;" />
                                     </div>
 
