@@ -12,7 +12,7 @@
                 @method('PUT')
                 <div class="modal-body">
                       <div class="mb-3">
-                        <label for="formGroupExampleInput" class="form-label">Nama Masjid</label>
+                        <label for="formGroupExampleInput" class="form-label">Nama KarTar</label>
                         <input type="text" class="form-control" value="{{$d->masjid}}" id="formGroupExampleInput" placeholder="Nama Masjid" name="masjid">
                       </div>
                       

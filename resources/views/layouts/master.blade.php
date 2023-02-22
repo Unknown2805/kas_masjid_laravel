@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kas Masjid</title>
+    <title>Kas KarTar</title>
 
     <link rel="stylesheet" href={{ asset('assets/css/main/app.css') }}>
     <link rel="stylesheet" href={{ asset('assets/css/main/app-dark.css') }}>
@@ -70,19 +70,19 @@
                             </a>
                         </li>
 
-                        {{-- Kas Masjid --}}
+                        {{-- Kas KarTar --}}
                         <li class="sidebar-item  has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-bell-fill"></i>
-                                <span>Kas Masjid</span>
+                                <span>Kas KarTar</span>
                             </a>
                             <ul class="submenu ">
                                 <li class="submenu-item {{ request()->is('kas-masjid-pemasukan*') ? 'active' : '' }}">
-                                    <a href={{ url('kas-masjid-pemasukan') }}>Pemasukan Kas Masjid</a>
+                                    <a href={{ url('kas-masjid-pemasukan') }}>Pemasukan Kas KarTar</a>
                                 </li>
                                 <li
                                     class="submenu-item {{ request()->is('kas-masjid-pengeluaran*') ? 'active' : '' }}">
-                                    <a href={{ url('kas-masjid-pengeluaran') }}>Pengeluaran Kas Masjid</a>
+                                    <a href={{ url('kas-masjid-pengeluaran') }}>Pengeluaran Kas KarTar</a>
                                 </li>
                             </ul>
                         </li>
@@ -111,7 +111,7 @@
                             </a>
                             <ul class="submenu ">
                                 <li class="submenu-item {{ request()->is('kas-masjid-rekap*') ? 'active' : '' }}">
-                                    <a href={{ url('kas-masjid-rekap') }}>Rekap Kas Masjid</a>
+                                    <a href={{ url('kas-masjid-rekap') }}>Rekap Kas KarTar</a>
                                 </li>
                                 <li class="submenu-item {{ request()->is('kas-sosial-rekap*') ? 'active' : '' }}">
                                     <a href={{ url('kas-sosial-rekap') }}>Rekap Kas Sosial</a>
@@ -124,7 +124,7 @@
                         <li class="sidebar-item  ">
                             <a href="{{ url('/events') }}" class='sidebar-link'>
                                 <i class="bi bi-calendar-event-fill"></i>
-                                <span>Event Masjid</span>
+                                <span>Event KarTar</span>
                             </a>
                         </li>
                         @hasrole('admin')

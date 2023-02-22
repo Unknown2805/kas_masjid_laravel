@@ -14,7 +14,7 @@
                     @csrf
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label for="formGroupExampleInput" class="form-label">Nama Masjid</label>
+                            <label for="formGroupExampleInput" class="form-label">Nama KarTar</label>
                             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nama Masjid"
                                 name="masjid">
                         </div>
@@ -107,7 +107,7 @@
                     <div class="col-12 col-md-6">
                         <div class="card shadow" style="height:260px;">
                             <div class="card-header">
-                                <h4>Saldo Kas Masjid saat ini</h4>
+                                <h4>Saldo Kas KarTar saat ini</h4>
 
                                 @if ($rek_m == 0)
                                     <h6>Saldo: kosong<h6>
@@ -187,7 +187,7 @@
                     <div class="col-12 col-md-6">
                         <div class="card shadow">
                             <div class="card-header">
-                                <h4>Rekap kas Masjid tahun ini</h4>
+                                <h4>Rekap Kas KarTar tahun ini</h4>
                             </div>
 
                             <div class="text-center  mb-3 px-5">

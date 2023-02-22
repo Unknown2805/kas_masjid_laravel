@@ -42,20 +42,20 @@ Route::post('/report/periode/barang', [KasMasjidController::class, 'cetak_period
 
 Route::post('/report/periode/barang', [KasSosialController::class, 'cetak_periode_pdf']);
 
-//get data kas masjid
+//get data Kas KarTar
 Route::get('/kas-masjid-rekap', [KasMasjidController::class, 'rekap']);
 Route::get('/kas-masjid-pengeluaran', [KasMasjidController::class, 'keluar']);
 Route::get('/kas-masjid-pemasukan', [KasMasjidController::class, 'masuk']);
 
-//post data kas masjid
+//post data Kas KarTar
 Route::post('kas-masjid/pemasukan/tambah', [KasMasjidController::class, 'storePemasukan'])->name('kasmasjid.masuk');
 Route::post('kas-masjid/pengeluaran/tambah', [KasMasjidController::class, 'storePengeluaran'])->name('kasmasjid.masuk');
 
-//edit data kas masjid
+//edit data Kas KarTar
 Route::put('kas-masjid-pemasukan/edit/{id}', [KasMasjidController::class, 'editPemasukan'])->name('kasmasjid.editMasuk');
 Route::put('kas-masjid-pengeluaran/edit/{id}', [KasMasjidController::class, 'editPengeluaran'])->name('kasmasjid.editKeluar');
 
-//delete kas masjid
+//delete Kas KarTar
 Route::delete('/kas-masjid/delete/{id}', [KasMasjidController::class, 'destroy']);
 
 Route::post('store-admin', [UserController::class, 'store'])->name('admin.store');

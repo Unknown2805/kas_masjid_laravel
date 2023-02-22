@@ -15,7 +15,7 @@
 <body style="background-color:#ecf9f7;">
 
     {{-- <nav class="navbar navbar-expand-lg">
-      <b class="text-dark" style="font-size:22px">Kas Masjid</b>
+      <b class="text-dark" style="font-size:22px">Kas KarTar</b>
       <div class="container">
         
           <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
@@ -36,7 +36,7 @@
 
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand text-dark" href="#"><b>Kas Masjid</b></a>
+        <a class="navbar-brand text-dark" href="#"><b>Kas KarTar</b></a>
 
         <a class="nav-item text-secondary" href="/login" style="font-size:20px">login </a>
 
@@ -62,7 +62,7 @@
                                 <div class="col-12 col-md-12 mt-2">
                                     <div class="judul" style="font-size:20rem ;">
                                         <div class="text-center">
-                                            <h5 class="card-title">Nama Masjid</h5>
+                                            <h5 class="card-title">Nama KarTar</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -107,7 +107,7 @@
                     <div class="card mb-4 shadow" style="height:260px;">
 
                         <div class="card-header">
-                            <h4>Saldo Kas Masjid saat ini</h4>
+                            <h4>Saldo Kas KarTar saat ini</h4>
                             <h5>Saldo: Rp.@money((float) "$rek_m")<h5>
                         </div>
 
@@ -180,7 +180,7 @@
         <div class="row">
 
             <div class="text-center text-dark mb-2 mt-3">
-                <h5><b>Event Masjid</b></h5>
+                <h5><b>Event KarTar</b></h5>
             </div>
 
             @if (!isset($data[0]->gambar))
