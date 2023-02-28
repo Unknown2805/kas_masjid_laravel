@@ -2,9 +2,22 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Landing Page</title>
+    @php
+        use App\Models\ProfileMasjid;
+        $profile = ProfileMasjid::first();
+    @endphp
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    @if(isset($profile->masjid))
+    <title>{{$profile->masjid}}</title>
+    <link rel="shortcut icon" href="{{asset('/storage/masjid/' . $profile->image)}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{asset('/storage/masjid/' . $profile->image)}}" type="image/png">
+    @else
+        <title>Kas Masjid</title>
+        <link rel="shortcut icon" href="assets/images/logo/favicon.svg" type="image/x-icon">
+        <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/png">
+    @endif
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('assets/css/main/app.css') }}">
