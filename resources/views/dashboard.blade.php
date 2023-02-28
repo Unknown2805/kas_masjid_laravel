@@ -45,7 +45,7 @@
                             <img src="assets/images/faces/masjidsamping.jpg" />
                         </div>
                         <span class="font-bold ms-1" style="font-size: 24px">
-                            Nama Masjid
+                            Nama KarTar
                         </span>
 
                     </div>
@@ -59,7 +59,7 @@
                             <img src="assets/images/faces/masjidsamping.jpg" />
                         </div>
                         <span class="font-bold ms-1" style="font-size: 24px">
-                            Nama Masjid
+                            Nama KarTar
                         </span>
                     </div>
 

@@ -2,16 +2,26 @@
 <html lang="en">
 
 <head>
+    @php
+        use App\Models\ProfileMasjid;
+        $profile = ProfileMasjid::first();
+    @endphp
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Kas KarTar</title>
-    <link rel="stylesheet" href="assets/css/main/app.css">
-    <link rel="stylesheet" href="assets/css/pages/auth.css">
-    <link rel="shortcut icon" href="assets/images/logo/favicon.svg" type="image/x-icon">
-    <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/png">
+    @if(isset($profile->masjid))
+    <title>{{$profile->masjid}}</title>
+    <link rel="shortcut icon" href="{{asset('/storage/masjid/' . $profile->image)}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{asset('/storage/masjid/' . $profile->image)}}" type="image/png">
+    @else
+        <title>KarTar Login</title>
+        <link rel="shortcut icon" href="assets/images/logo/favicon.svg" type="image/x-icon">
+        <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/png">
+    @endif    <link rel="stylesheet" href="assets/css/main/app.css">
+    <link rel="stylesheet" href="assets/css/pages/auth.css"> 
 </head>
 
 <body>
+
     <div id="auth">
 
         <div class="row">
@@ -22,15 +32,30 @@
                         @csrf
 
                             <div class="text-center">
-                                <h5>
-                                    <div class="text-center">
-                                        <img src="assets/images/logo/favicon.svg" class="avatar-xl mb-2" alt="Logo" style="height:60px;width:60px;">
-    
-                                    </div>
-                                    <div class="text-center mb-5">
 
-                                    Kas KarTar
-                                    </div>
+                                <h5>
+                                    {{-- @dd($profile) --}}
+                                    @if(isset($profile->masjid))
+                                        <div class="text-center">
+                                            <img src="{{ asset('/storage/masjid/' . $profile->image)}}" class="avatar avatar-xl mb-2" alt="Logo" style="height:80px;width:80px;">
+        
+                                        </div>
+                                        <div class="text-center mb-5">
+
+                                            {{ $profile->masjid }}
+
+                                        </div>
+                                    @else
+                                        <div class="text-center">
+                                            <img src="{{ asset('assets/images/logo/favicon.svg')}}" class="avatar avatar-xl mb-2" alt="Logo" style="height:80px;width:80px;">
+        
+                                        </div>
+                                        <div class="text-center mb-5">
+        
+                                            {{'Kas KarTar'}}
+        
+                                        </div>
+                                    @endif
                                 </h5>
                             </div>
                         

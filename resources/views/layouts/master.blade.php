@@ -2,15 +2,25 @@
 <html lang="en">
 
 <head>
+    @php
+    use App\Models\ProfileMasjid;
+    $profile = ProfileMasjid::first();
+    @endphp
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kas KarTar</title>
+    
+    @if(isset($profile->masjid))
+    <title>{{$profile->masjid}}</title>
+    <link rel="shortcut icon" href="{{asset('/storage/masjid/' . $profile->image)}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{asset('/storage/masjid/' . $profile->image)}}" type="image/png">
+    @else
+        <title>Kas KarTar</title>
+        <link rel="shortcut icon" href="assets/images/logo/favicon.svg" type="image/x-icon">
+        <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/png">
+    @endif
 
     <link rel="stylesheet" href={{ asset('assets/css/main/app.css') }}>
     <link rel="stylesheet" href={{ asset('assets/css/main/app-dark.css') }}>
-    <link rel="shortcut icon" href={{ asset('assets/images/logo/favicon.svg') }} type="image/x-icon">
-    <link rel="shortcut icon" href={{ asset('assets/images/logo/favicon.png') }} type="image/png">
-
     <link rel="stylesheet" href={{ asset('assets/css/pages/simple-datatables.css') }}>
     <link rel="stylesheet" href={{ asset('assets/css/shared/iconly.css') }}>
 
