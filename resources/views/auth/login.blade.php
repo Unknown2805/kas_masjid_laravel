@@ -36,7 +36,7 @@
                                 <h5>
                                     @if(isset($profile->masjid))
                                         <div class="text-center">
-                                            <img src="{{ asset('/storage/masjid/' . $e->image) }}" class="avatar-xl mb-2" alt="Logo" style="height:60px;width:60px;">
+                                            <img src="{{ asset('/storage/masjid/' . $profile->image) }}" class="avatar avatar-xl mb-2" alt="Logo" style="height:80px;width:80px;">
         
                                         </div>
                                         <div class="text-center mb-5">
@@ -44,7 +44,7 @@
                                         </div>
                                     @else
                                         <div class="text-center">
-                                            <img src="assets/images/logo/favicon.svg" class="avatar-xl mb-2" alt="Logo" style="height:60px;width:60px;">
+                                            <img src="assets/images/logo/favicon.svg" class="avatar-xl mb-2" alt="Logo" style="height:80px;width:80px;">
         
                                         </div>
                                         <div class="text-center mb-5">
