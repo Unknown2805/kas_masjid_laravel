@@ -48,6 +48,26 @@ class UserController extends Controller
         return redirect()->back()->with('success', 'Task Created Successfully!');
     }
 
+    public function edit(Request $request, $id){
+        if($request->password){
+
+            $edit = User::find($id)->update([
+                        "name" => $request->name,
+                        "email" => $request->email,
+                        "password" => bcrypt($request->password)
+                    ]);
+        }else{
+            
+            $edit = User::find($id)->update([
+                "name" => $request->name,
+                "email" => $request->email,
+            ]);
+        }
+
+
+        Alert::success('Sukses!', 'Berhasil Mengedit Data');
+        return redirect()->back()->with('success', 'Task Updated Successfully!');
+    }
 
     public function login(Request $request)
     {

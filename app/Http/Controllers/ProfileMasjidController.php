@@ -42,27 +42,46 @@ class ProfileMasjidController extends Controller
     }
 
     public function editMasjid(Request $request,$id){
-        $data = ProfileMasjid::where('id',$id)->firstOrFail();
-
-        $request->validate([
-            'image' => 'required|file|max:3072',
-            'masjid' => 'required',
-            
-        ]);
-
-        $data->masjid = $request->masjid;
-       
         
-        $img = $request->file('image');
-        $filename = $img->getClientOriginalName();
+        // dd($request);      
 
-        if ($request->hasFile('image')) {
-            $request->file('image')->storeAs('/masjid',$filename);
+
+        if($request->image && $request->masjid){
+            $img = $request->file('image');
+            $filename = $img->getClientOriginalName();
+    
+            if ($request->hasFile('image')) {
+                $request->file('image')->storeAs('/masjid',$filename);
+            }
+            $image = $request->file('image')->getClientOriginalName();
+            
+            $data = ProfileMasjid::where('id',$id)->first();
+            $data->update([
+                'masjid' => $request->masjid,
+                'image' => $image,
+            ]);
+        }elseif($request->image && $request->masjid === null){
+
+            $img = $request->file('image');
+            $filename = $img->getClientOriginalName();
+    
+            if ($request->hasFile('image')) {
+                $request->file('image')->storeAs('/masjid',$filename);
+            }
+            $image = $request->file('image')->getClientOriginalName();
+            
+            $data = ProfileMasjid::where('id',$id)->first();
+            $data->update([
+                'image' => $image,
+            ]);
+        }elseif($request->image === null && $request->masjid){
+            
+            $data = ProfileMasjid::where('id',$id)->first();
+            $data->update([
+                'masjid' => $request->masjid,
+            ]);
         }
-        $data->image = $request->file('image')->getClientOriginalName();
-        // dd($data);
-        $data->update();
-
+       
         return redirect()->back();
     }
 }

@@ -21,8 +21,11 @@
     <link rel="stylesheet" href="assets/css/main/app.css">
     <link rel="stylesheet" href="assets/css/pages/auth.css"> 
 </head>
-
-<body>
+@if(isset($profile->masjid))
+<body style="background-image: url('{{asset('/storage/masjid/' . $profile->image)}}');background-position:right;height: 80%;background-repeat: no-repeat;background-size: 50% 100%;">
+@else
+<body style="background-image: url('{{asset('/assets/images/faces/desa.jpg')}}');background-position:right;height: 80%;background-repeat: no-repeat;background-size: 50% 100%;">
+@endif
     <div id="auth">
 
         <div class="row">
@@ -94,13 +97,7 @@
                         <p><a class="font-bold" href="auth-forgot-password.html">Forgot password?</a>.</p>
                     </div> --}}
                 </div>
-            </div>
-            <div class="col-lg-7 d-none d-lg-block">
-                <div id="auth-right">
-
-                    <img src="assets/images/faces/desa.jpg" width="900px" height="655px">
-                </div>
-            </div>
+            </div>          
         </div>
 
     </div>

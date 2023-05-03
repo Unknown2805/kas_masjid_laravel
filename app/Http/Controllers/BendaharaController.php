@@ -48,13 +48,27 @@ class BendaharaController extends Controller
         Alert::success('Sukses!','Berhasil Menambah Data');
         return redirect()->route('bendahara.index')->with('success', 'Task Created Successfully!');
     }
-  
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public function edit(Request $request, $id){
+        if($request->password){
+
+            $edit = User::find($id)->update([
+                        "name" => $request->name,
+                        "email" => $request->email,
+                        "password" => bcrypt($request->password)
+                    ]);
+        }else{
+            
+            $edit = User::find($id)->update([
+                "name" => $request->name,
+                "email" => $request->email,
+            ]);
+        }
+
+
+        Alert::success('Sukses!', 'Berhasil Mengedit Data');
+        return redirect()->back()->with('success', 'Task Updated Successfully!');
+    }
+
     public function destroy($id)
     {
         $item = User::find($id);

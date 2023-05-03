@@ -127,7 +127,7 @@
                                         <div class="text-center" style="height: 125px;width:125px;">
                                             <canvas id="d_masjid"></canvas>
                                         </div>
-                                    </div>
+                                    </div>l
                                     <div class="col-6 col-md-6">
                                         <h5 style="font-size:15px"><i class="bi bi-circle-fill" style="color:#435EBE;"></i>
                                             Pemasukan</h5>

@@ -85,11 +85,13 @@ Route::get('/rekap/sosial', [KasSosialController::class, 'cetak_pdf']);
 //Admin
 Route::get('/admin', [UserController::class, 'index'])->name('admin.index');
 Route::post('/store-admin', [UserController::class, 'store']);
+Route::put('/edit-admin/{id}', [UserController::class, 'edit']);
 Route::delete('/admin-destroy/{id}', [UserController::class, 'destroy']);
 
 //Bendahara
 Route::get('/bendahara', [BendaharaController::class, 'index'])->name('bendahara.index');
 Route::post('/store-bendahara', [BendaharaController::class, 'store']);
+Route::put('/edit-bendahara/{id}', [BendaharaController::class, 'edit']);
 Route::delete('/bendahara-destroy/{id}', [BendaharaController::class, 'destroy']);
 
 Auth::routes();

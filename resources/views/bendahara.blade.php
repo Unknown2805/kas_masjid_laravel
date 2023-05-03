@@ -52,6 +52,58 @@
             </div>
         </div>
     </div>
+
+    @foreach ($bendahara as $b)
+        <div class="modal fade" id="bendaharaEdit{{$b->id}}" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary">
+                        <h2 class="modal-title" style="color: white">Add Admin</h2>
+                        <button style="color: white" type="button" class="" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <form action={{ url('/edit-bendahara/'. $b->id) }} method="post" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+                        <div class="modal-body container">
+                            <div class="col-md-12 mb-4">
+                                <div class="form-floating">
+                                    <input required type="text" class="form-control mt-2" id="floatingName"
+                                        placeholder="Name" name="name" value="{{$b->name}}">
+                                    <label for="floatingKeterangan">Name</label>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-4">
+                                <div class="form-floating">
+                                    <input required asp-for="email" type="email"
+                                        class="form-control mt-3 @error('email') is invalid @enderror" id="floatingEmail"
+                                        placeholder="Email" name="email" value="{{$b->email}}">
+                                    <label for="floatingEmail">Email</label>
+                                </div>
+                                @error('email')
+                                    <div class='mt-1'>
+                                        <span class=" text-danger" asp-validation-for="email">
+                                            {{ $message }}
+                                        </span>
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="col-md-12 mb-4">
+                                <div class="form-floating">
+                                    <input type="password" class="form-control mt-3 " id="floatingPassword"
+                                        placeholder="Password" name="password">
+                                    <label for="floatingPassword">Password</label>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary btn_add mt-3">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    @endforeach
     @foreach ($bendahara as $d)
         <div class="modal fade" id="delete{{ $d->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
@@ -110,8 +162,10 @@
                                 <td>{{ $bendaharas->email }}</td>
                                 <td>{{ $bendaharas->roles->pluck('name')->implode('') }}</td>
                                 <td>
+                                    <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
+                                    data-bs-target="#bendaharaEdit{{ $bendaharas->id }}">edit</i></a>
                                     <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal"
-                                        data-bs-target="#delete{{ $d->id }}">delete</i></a>
+                                        data-bs-target="#delete{{ $bendaharas->id }}">delete</i></a>
                                 </td>
                             </tr>
                         @endforeach
